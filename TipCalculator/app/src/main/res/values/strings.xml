@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TipCalculator</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="transactionHint">Enter transaction total</string>
+    <string name="p10">10%</string>
+    <string name="p15">15%</string>
+    <string name="p20">20%</string>
+    <string name="tipTotal">Tip total:</string>
+    <string name="zeroDollars">$0.00</string>
+
+</resources>
