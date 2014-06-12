@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/khayden/AndroidStudioProjects/ImageSearcher/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.4-275e03d0e04771afc16a31b1180ea0b8d8ea9d17.jar"
+        jar="/Users/khayden/AndroidStudioProjects/ImageSearcher/app/libs/android-async-http-1.4.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3bae85a076241828810bf8fbcc12e5891d5fc34c"/>
+    <item
+        dex="/Users/khayden/AndroidStudioProjects/ImageSearcher/app/build/intermediates/pre-dexed/debug/android-smart-image-view-1.0.0-8f2e555569092886a56a6ac5002f7f6ac2434304.jar"
+        jar="/Users/khayden/AndroidStudioProjects/ImageSearcher/app/libs/android-smart-image-view-1.0.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="d76ea8c3e9a60101244d6d04aff8cc75888570f0"/>
+
+</pre-dex-items>
