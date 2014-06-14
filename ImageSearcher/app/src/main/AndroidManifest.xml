@@ -22,6 +22,10 @@
             android:name=".ImageDisplayActivity"
             android:label="@string/title_activity_smart_image_view" >
         </activity>
+        <activity
+            android:name=".AdvancedSearchOptions"
+            android:label="@string/title_activity_advanced_search_options" >
+        </activity>
     </application>
 
 </manifest>

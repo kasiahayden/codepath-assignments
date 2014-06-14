@@ -8,6 +8,12 @@
         revision="19.1.0"
         sha1="3bae85a076241828810bf8fbcc12e5891d5fc34c"/>
     <item
+        dex="/Users/khayden/AndroidStudioProjects/ImageSearcher/app/build/intermediates/pre-dexed/debug/classes-5901354e3ce6063a5fe88560b5cf37de33282d7e.jar"
+        jar="/Users/khayden/AndroidStudioProjects/ImageSearcher/build/intermediates/exploded-aar/org.lucasr.smoothie/smoothie/0.1.0/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="ea6eb6d34b3cbf187f49b9e44d94526ae0e7a248"/>
+    <item
         dex="/Users/khayden/AndroidStudioProjects/ImageSearcher/app/build/intermediates/pre-dexed/debug/android-smart-image-view-1.0.0-8f2e555569092886a56a6ac5002f7f6ac2434304.jar"
         jar="/Users/khayden/AndroidStudioProjects/ImageSearcher/app/libs/android-smart-image-view-1.0.0.jar"
         jumboMode="false"

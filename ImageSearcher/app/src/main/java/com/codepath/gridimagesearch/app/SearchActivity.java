@@ -92,6 +92,8 @@ public class SearchActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            Intent i = new Intent(getApplicationContext(), AdvancedSearchOptions.class);
+            startActivityForResult(i, 4);
             return true;
         }
         return super.onOptionsItemSelected(item);

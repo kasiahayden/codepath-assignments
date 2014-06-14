@@ -8,5 +8,44 @@
     <string name="btnSearch">Search</string>
     <string name="etQueryHint">Enter Search Term</string>
     <string name="title_activity_smart_image_view">SmartImageView</string>
+    <string name="title_activity_advanced_search_options">AdvancedSearchOptions</string>
+
+    <string name="advancedSearchOptions">Advanced Search Options</string>
+
+    <string name="imageSize">Image Size</string>
+    <string name="colorFilter">Color Filter</string>
+    <string name="imageType">Image Type</string>
+
+    <string name="siteFilter">Site Filter</string>
+    <string name="save">Save</string>
+
+    <string-array name="arrImageSize">
+        <item>small</item>
+        <item>medium</item>
+        <item>large</item>
+        <item>extra-large</item>
+    </string-array>
+
+    <string-array name="arrColorFilter">
+        <item>red</item>
+        <item>orange</item>
+        <item>yellow</item>
+        <item>green</item>
+        <item>teal</item>
+        <item>blue</item>
+        <item>purple</item>
+        <item>pink</item>
+        <item>white</item>
+        <item>gray</item>
+        <item>black</item>
+        <item>brown</item>
+    </string-array>
+
+    <string-array name="arrImageType">
+        <item>faces</item>
+        <item>photo</item>
+        <item>clip art</item>
+        <item>line art</item>
+    </string-array>
 
 </resources>
