@@ -4,11 +4,25 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ImageResult {
+public class ImageResult implements Serializable {
+    //generate serial version id?
+
+
+
     private String fullUrl;
+
+    public String getThumbUrl() {
+        return thumbUrl;
+    }
+
+    public void setThumbUrl(String thumbUrl) {
+        this.thumbUrl = thumbUrl;
+    }
+
     private String thumbUrl;
 
     public ImageResult(JSONObject json) {

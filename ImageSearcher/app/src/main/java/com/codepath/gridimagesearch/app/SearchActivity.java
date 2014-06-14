@@ -1,12 +1,14 @@
 package com.codepath.gridimagesearch.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -27,12 +29,25 @@ public class SearchActivity extends Activity {
     GridView gvResults;
     Button btnSearch;
     ArrayList<ImageResult> imageResults = new ArrayList<ImageResult>();
+    ImageResultArrayAdapter imageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         setupViews();
+        imageAdapter = new ImageResultArrayAdapter(this, imageResults);
+        gvResults.setAdapter(imageAdapter);
+        gvResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long rowId) {
+                Intent i = new Intent(getApplicationContext(), ImageDisplayActivity.class);
+                ImageResult imageResult = imageResults.get(position);
+                //i.putExtra("url", imageResult.getFullUrl());
+                i.putExtra("result", imageResult);
+                startActivity(i);
+            }
+        });
     }
 
 
@@ -61,7 +76,7 @@ public class SearchActivity extends Activity {
                 try {
                     imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
                     imageResults.clear();
-                    imageResults.addAll(ImageResult.fromJSONArray(imageJsonResults));
+                    imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
                     Log.d("DEBUG", imageResults.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
