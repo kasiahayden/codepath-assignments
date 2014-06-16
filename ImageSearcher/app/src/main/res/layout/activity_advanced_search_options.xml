@@ -38,7 +38,7 @@
         android:layout_below="@+id/tvAdvancedSearchOptionsTitle"
         android:layout_toRightOf="@+id/tvImageSize"
         android:layout_alignTop="@+id/tvImageSize"
-        android:layout_alignBottom="@+id/tvImageSize" />
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:id="@+id/tvColorFilter"
@@ -58,7 +58,7 @@
         android:layout_below="@+id/tvImageSize"
         android:layout_toRightOf="@+id/tvColorFilter"
         android:layout_alignTop="@+id/tvColorFilter"
-        android:layout_alignBottom="@+id/tvColorFilter" />
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:id="@+id/tvImageType"
@@ -78,7 +78,7 @@
         android:layout_below="@+id/tvColorFilter"
         android:layout_toRightOf="@+id/tvImageType"
         android:layout_alignTop="@+id/tvImageType"
-        android:layout_alignBottom="@+id/tvImageType" />
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:id="@+id/tvSiteFilter"
@@ -91,21 +91,22 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/siteFilter" />
 
-    <TextView
+    <EditText
         android:id="@+id/etSiteFilter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/tvSiteFilter"
         android:layout_alignBottom="@+id/tvSiteFilter"
-        android:hint="hint" />
+        android:hint="@string/any" />
 
     <Button
-        android:id="@+id/btnSave"
+        android:id="@+id/btnSaveSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="144dp"
+        android:onClick="btnSaveSettings"
         android:text="@string/save" />
 
 

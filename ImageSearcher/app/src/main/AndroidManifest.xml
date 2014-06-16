@@ -26,6 +26,10 @@
             android:name=".AdvancedSearchOptions"
             android:label="@string/title_activity_advanced_search_options" >
         </activity>
+        <activity
+            android:name=".ViewImage"
+            android:label="@string/title_activity_view_image" >
+        </activity>
     </application>
 
 </manifest>

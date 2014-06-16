@@ -10,9 +10,6 @@ import java.util.Collection;
 
 public class ImageResult implements Serializable {
     //generate serial version id?
-
-
-
     private String fullUrl;
 
     public String getThumbUrl() {
