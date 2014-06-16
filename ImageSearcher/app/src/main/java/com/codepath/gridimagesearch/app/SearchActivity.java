@@ -6,12 +6,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -35,6 +37,7 @@ public class SearchActivity extends Activity {
     SettingsResult settingsResult;
     private int startImageIndex = 0;
     private int incrementImageIndex = 4;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +85,64 @@ public class SearchActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+
+        //MenuInflater inflater = getMenuInflater();
+        //inflater.inflate(R.menu.main, menu);
+        //MenuItem searchItem = menu.findItem(R.id.action_search);
+        //searchView = (SearchView) searchItem.getActionView();
+        //Toast.makeText(this, "searchView null?: " + (searchView == null), Toast.LENGTH_LONG).show();
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                // perform query here
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                return true;
+//            }
+//        });
+        //return super.onCreateOptionsMenu(menu);
+
+        MenuInflater inflater = getMenuInflater();
+        //inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.main, menu);
+
+        final MenuItem searchItem = menu.findItem(R.id.action_search);
+        //SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        final SearchView searchView = (SearchView) searchItem.getActionView();
+        //Toast.makeText(this, "searchView null?: " + (searchView == null), Toast.LENGTH_LONG).show();
+        if (searchView != null) {
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    imageResults.clear();
+                    //query = etQuery.getText().toString();
+                    query = s;
+                    Toast.makeText(getApplicationContext(), "Searching for " + query, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "testing", Toast.LENGTH_LONG).show();
+                    startImageIndex = 0;
+                    String url = makeUrl();
+                    Toast.makeText(getApplicationContext(), "url: " + url, Toast.LENGTH_LONG).show();
+                    executeImageSearch(url);
+                    return true; //matters if true or false?
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    //imageResults.clear();
+                    return false;
+                }
+            });
+        }
+
+        return super.onCreateOptionsMenu(menu);
+
+
     }
 
     public void setupViews() {
