@@ -9,6 +9,7 @@
     tools:context="com.codepath.gridimagesearch.app.AdvancedSearchOptions">
 
 
+    <!--
     <TextView
         android:id="@+id/tvAdvancedSearchOptionsTitle"
         android:layout_width="wrap_content"
@@ -110,6 +111,7 @@
         android:text="@string/save" />
 
 
+    -->
 
 
 </RelativeLayout>
