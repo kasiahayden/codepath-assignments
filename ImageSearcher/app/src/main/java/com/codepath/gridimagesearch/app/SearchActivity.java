@@ -1,7 +1,11 @@
 package com.codepath.gridimagesearch.app;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,7 +41,6 @@ public class SearchActivity extends Activity {
     SettingsResult settingsResult;
     private int startImageIndex = 0;
     private int incrementImageIndex = 4;
-    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,14 @@ public class SearchActivity extends Activity {
         });
 
 
+        // See if online
+        // Always returning true. Just the emulator?
+        Toast.makeText(this, "Connected to internet?: " + isNetworkAvailable(), Toast.LENGTH_LONG).show();
+        // Always returning false. Arg.
+        Toast.makeText(this, "Connected to internet?: " + isOnline(), Toast.LENGTH_LONG).show();
+
+
+        showEditDialog();
     }
 
     // Append more data into the adapter
@@ -84,65 +95,38 @@ public class SearchActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-
-        //MenuInflater inflater = getMenuInflater();
-        //inflater.inflate(R.menu.main, menu);
-        //MenuItem searchItem = menu.findItem(R.id.action_search);
-        //searchView = (SearchView) searchItem.getActionView();
-        //Toast.makeText(this, "searchView null?: " + (searchView == null), Toast.LENGTH_LONG).show();
-//
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                // perform query here
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                return true;
-//            }
-//        });
-        //return super.onCreateOptionsMenu(menu);
-
         MenuInflater inflater = getMenuInflater();
-        //inflater.inflate(R.menu.menu, menu);
-        inflater.inflate(R.menu.main, menu);
+        inflater.inflate(R.menu.main, menu); //you'd use R.menu.menu here if your xml file is menu.xml
 
-        final MenuItem searchItem = menu.findItem(R.id.action_search);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
         //SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        final SearchView searchView = (SearchView) searchItem.getActionView();
-        //Toast.makeText(this, "searchView null?: " + (searchView == null), Toast.LENGTH_LONG).show();
+        SearchView searchView = (SearchView) searchItem.getActionView();
         if (searchView != null) {
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String s) {
                     imageResults.clear();
-                    //query = etQuery.getText().toString();
                     query = s;
-                    Toast.makeText(getApplicationContext(), "Searching for " + query, Toast.LENGTH_LONG).show();
-                    Toast.makeText(getApplicationContext(), "testing", Toast.LENGTH_LONG).show();
                     startImageIndex = 0;
-                    String url = makeUrl();
-                    Toast.makeText(getApplicationContext(), "url: " + url, Toast.LENGTH_LONG).show();
-                    executeImageSearch(url);
-                    return true; //matters if true or false?
+                    if (isNetworkAvailable()) {
+                        Toast.makeText(getApplicationContext(), "Searching for " + query, Toast.LENGTH_LONG).show();
+                        String url = makeUrl();
+                        //Toast.makeText(getApplicationContext(), "url: " + url, Toast.LENGTH_LONG).show();
+                        executeImageSearch(url);
+                        return true;
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Please connect to the internet to search", Toast.LENGTH_LONG).show();
+                    }
+                    return false;
                 }
 
                 @Override
                 public boolean onQueryTextChange(String s) {
-                    //imageResults.clear();
                     return false;
                 }
             });
         }
-
         return super.onCreateOptionsMenu(menu);
-
-
     }
 
     public void setupViews() {
@@ -225,4 +209,35 @@ public class SearchActivity extends Activity {
             //this.settingsResult.setImageSize();
         }
     }
+
+    private Boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected(); //activeNetworkInfo.isConnectedOrConnecting());
+    }
+
+
+    public Boolean isOnline() {
+        try {
+            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+            int returnVal = p1.waitFor();
+            boolean reachable = (returnVal==0);
+            return reachable;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private void showEditDialog() {
+        FragmentManager fm = getFragmentManager(); //getSupportFragmentManager();
+        EditNameDialog editNameDialog = EditNameDialog.newInstance("Some Title");
+        editNameDialog.show(fm, "fragment_edit_name");
+    }
+
+
+
+
 }
