@@ -77,8 +77,6 @@ public class SearchActivity extends Activity {
         // Always returning false. Arg.
         //Toast.makeText(this, "Connected to internet?: " + isOnline(), Toast.LENGTH_LONG).show();
 
-
-        showEditDialog();
     }
 
     public SettingsResult getSettingsResult() {
@@ -191,9 +189,11 @@ public class SearchActivity extends Activity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             //Intent i = new Intent(getApplicationContext(), AdvancedSearchOptions.class);
+            /*
             Intent i = new Intent(getApplicationContext(), AdvancedSearchOptions.class);
             startActivityForResult(i, REQUEST_CODE);
-            return true;
+            */
+            showEditDialog();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -247,8 +247,5 @@ public class SearchActivity extends Activity {
         EditNameDialog editNameDialog = EditNameDialog.newInstance(searchSettingsFragmentTitle);
         editNameDialog.show(fm, "fragment_edit_name");
     }
-
-
-
 
 }
