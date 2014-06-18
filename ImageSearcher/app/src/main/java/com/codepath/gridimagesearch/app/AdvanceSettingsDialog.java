@@ -1,9 +1,7 @@
 package com.codepath.gridimagesearch.app;
 
 
-import android.content.Context;
 import android.app.DialogFragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,21 +15,20 @@ import android.widget.Spinner;
 /**
  * Created by khayden on 6/17/14.
  */
-public class EditNameDialog extends DialogFragment {
+public class AdvanceSettingsDialog extends DialogFragment {
     Button btnSaveSettings;
     Spinner snrImageSize;
     Spinner snrColorFilter;
     Spinner snrImageType;
     EditText etSiteFilter;
 
-    //private EditText mEditText;
 
-    public EditNameDialog() {
+    public AdvanceSettingsDialog() {
         // Empty constructor required for DialogFragment
     }
 
-    public static EditNameDialog newInstance(String title) {
-        EditNameDialog frag = new EditNameDialog();
+    public static AdvanceSettingsDialog newInstance(String title) {
+        AdvanceSettingsDialog frag = new AdvanceSettingsDialog();
         Bundle args = new Bundle();
         args.putString("title", title);
         frag.setArguments(args);
@@ -41,7 +38,7 @@ public class EditNameDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_edit_name, container);
+        View view = inflater.inflate(R.layout.fragment_advanced_settings, container);
         String title = getArguments().getString("title");
         getDialog().setTitle(title);
 
@@ -87,18 +84,8 @@ public class EditNameDialog extends DialogFragment {
                 etSiteFilter.getText().toString()
         );
 
-        /*
-
-        Intent i = new Intent();
-        i.putExtra("settings", settingsResult);
-        setResult(RESULT_OK, i);
-        finish();*/
-
         ((SearchActivity) getActivity()).setSettingsResult(updatedSettingsResult);
-
         getDialog().dismiss();
 
     }
-
-
 }
