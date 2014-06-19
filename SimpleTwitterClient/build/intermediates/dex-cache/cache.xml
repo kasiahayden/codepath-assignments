@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.3-72244e62759dfc4de218329eb454864e0f1ad9dc.jar"
+        jar="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/libs/android-async-http-1.4.3.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="f70e680861fdf9449819003e7799a4e9aca047f8"/>
+    <item
+        dex="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/build/intermediates/pre-dexed/debug/classes-91ba4420439c50a7fc205bd32d7169e71d748e85.jar"
+        jar="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+    <item
+        dex="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/build/intermediates/pre-dexed/debug/codepath-oauth-0.3.0-581e0199514a93f605f064c6a02f1df7425a8ef7.jar"
+        jar="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/libs/codepath-oauth-0.3.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="b90f1c3541987f690e2fb854775914cc23266250"/>
+    <item
+        dex="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.8.4-c49ce1e868ad0e0e25bdb777ba130a78961ccfda.jar"
+        jar="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/libs/universal-image-loader-1.8.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="eee81e43531ce82db1781c5a8b27781ca384eede"/>
+    <item
+        dex="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/build/intermediates/pre-dexed/debug/codepath-utils-a045db4c700f04872b25ded6af93794f4d4d7f5f.jar"
+        jar="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/libs/codepath-utils.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="10901a5ef726eacf1b2443b7f38dc4cc9cd3f7d4"/>
+    <item
+        dex="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/build/intermediates/pre-dexed/debug/ActiveAndroid-3.1-adcddac4c58-db6e65e609b26daa18a1a79ad686b1245990d394.jar"
+        jar="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/libs/ActiveAndroid-3.1-adcddac4c58.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="e550c03ed8bcfe3b9f97d8c5ce6e8ee305f3beed"/>
+    <item
+        dex="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/build/intermediates/pre-dexed/debug/scribe-codepath-dc8473bb72b69c9b2e7786c2243dba2ed2074795.jar"
+        jar="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/libs/scribe-codepath.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="6e0748acc9e7be0695de0d38016d260df52d9167"/>
+    <item
+        dex="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-fe930dc68beb1e566675ce71b270d4091c6c249b.jar"
+        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+
+</pre-dex-items>
