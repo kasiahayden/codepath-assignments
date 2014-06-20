@@ -1,10 +1,16 @@
 package com.codepath.apps.basictwitter.models;
 
+import android.text.format.DateUtils;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by khayden on 6/19/14.
@@ -13,6 +19,7 @@ public class Tweet {
     private String body;
     private long uid;
     private String createdAt;
+    private String timeSinceCreated;
     private User user;
 
     public static Tweet fromJson(JSONObject jsonObject) {
@@ -21,8 +28,10 @@ public class Tweet {
         try {
             tweet.body = jsonObject.getString("text");
             tweet.uid = jsonObject.getLong("id");
-            tweet.createdAt = jsonObject.getString("created_at");
+            //tweet.createdAt = jsonObject.getString("created_at");
+            tweet.createdAt = getSimpleDate(jsonObject.getString("created_at"));
             tweet.user = User.fromJSON(jsonObject.getJSONObject("user"));
+            tweet.timeSinceCreated = getRelativeTimeAgo(jsonObject.getString("created_at"));
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
@@ -41,6 +50,8 @@ public class Tweet {
     public String getCreatedAt() {
         return createdAt;
     }
+
+    public String getTimeSinceCreated() { return timeSinceCreated; }
 
     public User getUser() {
         return user;
@@ -70,4 +81,55 @@ public class Tweet {
     public String toString() {
         return getBody() + " - " + getUser().getScreenName();
     }
+
+    // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
+    public static String getRelativeTimeAgo(String rawJsonDate) {
+        String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+        SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
+        sf.setLenient(true);
+
+        String relativeDate = "";
+        try {
+            long dateMillis = sf.parse(rawJsonDate).getTime();
+            relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
+                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return relativeDate;
+    }
+
+    public static String getSimpleDate(String rawJsonDate) {
+
+        final String OLD_FORMAT = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+        final String NEW_FORMAT = "EEE MMM dd HH:mm yyyy";
+
+        String oldDateString = rawJsonDate;
+        String newDateString;
+        Date d = new Date();
+
+        SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+        try {
+            d = sdf.parse(oldDateString);
+        } catch (ParseException e) {
+        e.printStackTrace();
+        }
+
+        sdf.applyPattern(NEW_FORMAT);
+        newDateString = sdf.format(d);
+        return newDateString;
+    }
+
+    /*final String OLD_FORMAT = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+    final String NEW_FORMAT = "EEE MMM dd HH:mm yyyy";
+
+    // August 12, 2010
+    String oldDateString = "12/08/2010";
+    String newDateString;
+
+    SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+    Date d = sdf.parse(oldDateString);
+    sdf.applyPattern(NEW_FORMAT);
+    newDateString = sdf.format(d);*/
+
 }

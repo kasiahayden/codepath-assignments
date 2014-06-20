@@ -36,13 +36,21 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
         // Find the views within the template
         ImageView ivProfileImage = (ImageView) v.findViewById(R.id.ivProfileImage);
         TextView tvUserName = (TextView) v.findViewById(R.id.tvUserName);
+        TextView tvName = (TextView) v.findViewById(R.id.tvName);
         TextView tvBody = (TextView) v.findViewById(R.id.tvBody);
-        ivProfileImage.setImageResource(android.R.color.transparent);
+        TextView tvTimestamp = (TextView) v.findViewById(R.id.tvTimestamp);
+        TextView tvRelativeTime = (TextView) v.findViewById(R.id.tvRelativeTime);
+        //ivProfileImage.setImageResource(android.R.color.transparent);
+        int resId = android.R.color.transparent;
+        ivProfileImage.setImageResource(resId);
         ImageLoader imageLoader = ImageLoader.getInstance();
         // Populate views with tweet data
         imageLoader.displayImage(tweet.getUser().getProfileImageUrl(), ivProfileImage);
         tvUserName.setText(tweet.getUser().getScreenName());
+        tvName.setText(tweet.getUser().getName());
         tvBody.setText(tweet.getBody());
+        tvTimestamp.setText(tweet.getCreatedAt());
+        tvRelativeTime.setText(tweet.getTimeSinceCreated());
         return v;
 
 //        TextView tvName = (TextView) convertView.findViewById(R.id.tvName);

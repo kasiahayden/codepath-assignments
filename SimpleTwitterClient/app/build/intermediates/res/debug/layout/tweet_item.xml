@@ -22,12 +22,41 @@
         android:text="@string/foo_label" />
 
     <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvUserName"
+        android:layout_toRightOf="@+id/tvUserName"
+        android:layout_marginLeft="10dp"
+        android:text="Real name" />
+
+    <TextView
         android:id="@+id/tvBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvUserName"
         android:layout_below="@+id/tvUserName"
         android:text="This is the tweet body." />
+
+    <TextView
+        android:id="@+id/tvTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvBody"
+        android:layout_toRightOf="@+id/tvBody"
+        android:layout_marginLeft="10dp"
+        android:text="Timestamp" />
+
+    <TextView
+        android:id="@+id/tvRelativeTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvTimestamp"
+        android:layout_toRightOf="@+id/tvTimestamp"
+        android:layout_marginLeft="10dp"
+        android:text="Relative Time" />
+
+
 </RelativeLayout>
 
 <!-- From: file:/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/layout/tweet_item.xml -->
