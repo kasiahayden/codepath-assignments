@@ -6,5 +6,12 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/miCompose"
+        android:icon="@drawable/ic_action_compose"
+        android:showAsAction="always"
+        android:title="Compose">
+    </item>
 </menu>
 <!-- From: file:/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/menu/timeline.xml -->

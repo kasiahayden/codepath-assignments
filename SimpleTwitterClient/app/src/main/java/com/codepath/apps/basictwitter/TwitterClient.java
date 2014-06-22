@@ -33,10 +33,35 @@ public class TwitterClient extends OAuthBaseClient {
         super(context, REST_API_CLASS, REST_URL, REST_CONSUMER_KEY, REST_CONSUMER_SECRET, REST_CALLBACK_URL);
     }
 
-    public void getHomeTimeline(AsyncHttpResponseHandler handler) {
+    // https://api.twitter.com/1.1/statuses/home_timeline.json
+    public void getHomeTimeline(AsyncHttpResponseHandler handler, long since_id, long max_id) {
         String apiUrl = getApiUrl("statuses/home_timeline.json");
         RequestParams requestParams = new RequestParams();
-        requestParams.put("since_id", "1");
+        requestParams.put("since_id", "since_id"); //Long.toString(since_id)
+        if (max_id >= 0) {
+            requestParams.put("max_id", Long.toString(max_id));
+        }
+        client.get(apiUrl, null, handler);
+    }
+
+    // https://api.twitter.com/1.1/statuses/user_timeline.json
+    public void getUserTimeline(AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("statuses/user_timeline.json");
+        /*RequestParams requestParams = new RequestParams();
+        requestParams.put("name", "name");
+        requestParams.put("screen_name", "screen_name");
+        requestParams.put("profile_image_url", "profile_image_url");*/
+        client.get(apiUrl, null, handler);
+    }
+
+    //https://api.twitter.com/1.1/account/verify_credentials.json
+    public void getCurrentUser(AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("account/verify_credentials.json");
+        client.get(apiUrl, null, handler);
+    }
+
+    public void getMyInfo(AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("account/verify_credentials.json");
         client.get(apiUrl, null, handler);
     }
     

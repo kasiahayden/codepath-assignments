@@ -17,7 +17,7 @@ import java.util.Locale;
  */
 public class Tweet {
     private String body;
-    private long uid;
+    private long tweet_id;
     private String createdAt;
     private String timeSinceCreated;
     private User user;
@@ -27,7 +27,7 @@ public class Tweet {
         // Extract values from json to populate the member variables
         try {
             tweet.body = jsonObject.getString("text");
-            tweet.uid = jsonObject.getLong("id");
+            tweet.tweet_id = jsonObject.getLong("id");
             //tweet.createdAt = jsonObject.getString("created_at");
             tweet.createdAt = getSimpleDate(jsonObject.getString("created_at"));
             tweet.user = User.fromJSON(jsonObject.getJSONObject("user"));
@@ -43,8 +43,8 @@ public class Tweet {
         return body;
     }
 
-    public long getUid() {
-        return uid;
+    public long getTweetId() {
+        return tweet_id;
     }
 
     public String getCreatedAt() {
@@ -119,17 +119,5 @@ public class Tweet {
         newDateString = sdf.format(d);
         return newDateString;
     }
-
-    /*final String OLD_FORMAT = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
-    final String NEW_FORMAT = "EEE MMM dd HH:mm yyyy";
-
-    // August 12, 2010
-    String oldDateString = "12/08/2010";
-    String newDateString;
-
-    SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
-    Date d = sdf.parse(oldDateString);
-    sdf.applyPattern(NEW_FORMAT);
-    newDateString = sdf.format(d);*/
 
 }
