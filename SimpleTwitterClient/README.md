@@ -27,9 +27,12 @@ Completed required user stories:
 ..* [x] Optional: Links in tweets are clickable and will launch the web browser (see autolink)
 * [] User can compose a new tweet
 ..* [x] User can click a “Compose” icon in the Action Bar on the top right
-..* [] User can then enter a new tweet and post this to twitter
+..* [x] User can then enter a new tweet and post this to twitter
 ..* [] User is taken back to home timeline with new tweet visible in timeline
-..* [] Optional: User can see a counter with total number of characters left for tweet
+..* [x] Optional: User can see a counter with total number of characters left for tweet
+..* [x] Extra: Character count color changes to yellow with <10
+characters left to use, to red with no chars left to use
+..* [x] Extra: Tweet button is disabled on too many or few charaters.
 
 
 

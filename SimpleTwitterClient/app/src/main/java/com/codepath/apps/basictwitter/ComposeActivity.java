@@ -58,10 +58,13 @@ public class ComposeActivity extends Activity {
                 remainingCharacters = charactersPerTweet - characterCount;
                 tvCharacterCount.setText(Integer.toString(remainingCharacters));
 
-                if (remainingCharacters < 10 & remainingCharacters >= 0) {
+                if (remainingCharacters == 140) { // Nothing entered
+                    tvCharacterCount.setTextColor(Color.WHITE);
+                    btnTweet.setEnabled(false);
+                } else if (remainingCharacters < 10 & remainingCharacters >= 0) { // Few chars left
                     tvCharacterCount.setTextColor(Color.YELLOW);
                     btnTweet.setEnabled(true);
-                } else if (remainingCharacters < 0) {
+                } else if (remainingCharacters < 0) { // Too many chars
                     tvCharacterCount.setTextColor(Color.RED);
                     btnTweet.setEnabled(false);
                 } else {

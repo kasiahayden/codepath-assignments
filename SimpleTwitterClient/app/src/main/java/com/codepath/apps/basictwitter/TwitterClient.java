@@ -5,6 +5,8 @@ import org.scribe.builder.api.FlickrApi;
 import org.scribe.builder.api.TwitterApi;
 
 import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.codepath.oauth.OAuthBaseClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -44,26 +46,21 @@ public class TwitterClient extends OAuthBaseClient {
         client.get(apiUrl, null, handler);
     }
 
-    // https://api.twitter.com/1.1/statuses/user_timeline.json
-    public void getUserTimeline(AsyncHttpResponseHandler handler) {
-        String apiUrl = getApiUrl("statuses/user_timeline.json");
-        /*RequestParams requestParams = new RequestParams();
-        requestParams.put("name", "name");
-        requestParams.put("screen_name", "screen_name");
-        requestParams.put("profile_image_url", "profile_image_url");*/
-        client.get(apiUrl, null, handler);
-    }
-
     //https://api.twitter.com/1.1/account/verify_credentials.json
     public void getCurrentUser(AsyncHttpResponseHandler handler) {
         String apiUrl = getApiUrl("account/verify_credentials.json");
         client.get(apiUrl, null, handler);
     }
 
-    public void getMyInfo(AsyncHttpResponseHandler handler) {
-        String apiUrl = getApiUrl("account/verify_credentials.json");
-        client.get(apiUrl, null, handler);
+    //https://api.twitter.com/1.1/statuses/update.json
+    public void postStatus(AsyncHttpResponseHandler handler, String status) {
+        Log.d("debug", "postStatus: " + status);
+        String apiUrl = getApiUrl("statuses/update.json");
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("status", status);
+        client.post(apiUrl, requestParams, handler);
     }
+
     
     // CHANGE THIS
     // DEFINE METHODS for different API endpoints here

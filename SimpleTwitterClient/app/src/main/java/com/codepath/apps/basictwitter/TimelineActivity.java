@@ -2,7 +2,6 @@ package com.codepath.apps.basictwitter;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,12 +12,17 @@ import android.widget.Toast;
 
 import com.codepath.apps.basictwitter.models.Tweet;
 import com.codepath.apps.basictwitter.models.User;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 
 public class TimelineActivity extends Activity {
@@ -58,7 +62,7 @@ public class TimelineActivity extends Activity {
         client.getHomeTimeline(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(JSONArray json) {
-                Toast.makeText(getApplicationContext(), "populateTimeline success", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "populateTimeline success", Toast.LENGTH_SHORT).show();
                 Log.d("debug", json.toString());
                 ArrayList<Tweet> tweets = Tweet.fromJSONArray(json);
                 setMaxId(tweets);
@@ -87,6 +91,52 @@ public class TimelineActivity extends Activity {
             }
         });
     }
+
+    public void setStatus(String status) {
+        //Toast.makeText(getApplicationContext(), "postStatus: inside " + status, Toast.LENGTH_SHORT).show();
+        client.postStatus(new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(String response) {
+                //Toast.makeText(getApplicationContext(), "postStatus: object " + response, Toast.LENGTH_LONG).show();
+                //Log.d("debug", response);
+                JSONObject json;// = new JSONObject();
+                String created_at = "now";
+                try {
+                    json = new JSONObject(response);
+                    Tweet tweet = Tweet.fromJson(json);
+                    aTweets.add(tweet);
+                    aTweets.notifyDataSetChanged();
+                    aTweets.clear();
+                    populateTimeline(1, -1);
+
+                    //created_at = json.getString("created_at");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                //Toast.makeText(getApplicationContext(), "postStatus: created " + created_at, Toast.LENGTH_LONG).show();
+                //Log.d("debug", "json: " + json.toString());
+            }
+
+            /*public void onSuccess(JSONArray json) {
+
+                String created_at = "now";
+                try {
+                    created_at = json.getJSONObject(0).getString("created_at");
+                } catch (JSONException e) {
+                    created_at = "fail";
+                    e.printStackTrace();
+                }
+                Toast.makeText(getApplicationContext(), "postStatus: created " + created_at, Toast.LENGTH_LONG).show();
+                Log.d("debug", "json: " + json.toString());
+            }*/
+
+            @Override
+            public void onFailure(Throwable e, String s) {
+                Log.d("debug", e.toString());
+            }
+        }, status);
+    }
+
 
 
 
@@ -156,8 +206,11 @@ public class TimelineActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             String tweet = data.getExtras().getString("tweet");
-            Toast.makeText(this, tweet, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, tweet, Toast.LENGTH_SHORT).show();
+            setStatus(tweet);
         }
     }
+
+
 
 }
