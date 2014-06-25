@@ -929,6 +929,9 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int ic_action_compose=0x7f020057;
         public static final int ic_launcher=0x7f020058;
+        public static final int ic_reply=0x7f020059;
+        public static final int ic_retweet=0x7f02005a;
+        public static final int ic_star=0x7f02005b;
     }
     public static final class id {
         public static final int action_bar=0x7f07001c;
@@ -942,7 +945,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f070015;
         public static final int action_menu_presenter=0x7f070016;
         public static final int action_mode_close_button=0x7f070024;
-        public static final int action_settings=0x7f070046;
+        public static final int action_settings=0x7f070048;
         public static final int activity_chooser_view_content=0x7f070025;
         public static final int always=0x7f07000f;
         public static final int beginning=0x7f07000a;
@@ -963,10 +966,13 @@ containing a value of this type.
         public static final int ifRoom=0x7f07000e;
         public static final int image=0x7f070027;
         public static final int ivProfileImage=0x7f07003c;
+        public static final int ivReply=0x7f070045;
+        public static final int ivRetweet=0x7f070046;
+        public static final int ivStar=0x7f070047;
         public static final int listMode=0x7f070001;
         public static final int list_item=0x7f070029;
         public static final int lvTweets=0x7f070042;
-        public static final int miCompose=0x7f070047;
+        public static final int miCompose=0x7f070049;
         public static final int middle=0x7f07000b;
         public static final int never=0x7f07000d;
         public static final int none=0x7f070009;
@@ -996,9 +1002,8 @@ containing a value of this type.
         public static final int tvBody=0x7f070041;
         public static final int tvCharacterCount=0x7f07003f;
         public static final int tvName=0x7f07003d;
-        public static final int tvRelativeTime=0x7f070045;
+        public static final int tvRelativeTime=0x7f070044;
         public static final int tvScreenName=0x7f07003e;
-        public static final int tvTimestamp=0x7f070044;
         public static final int tvUserName=0x7f070043;
         public static final int up=0x7f070021;
         public static final int useLogo=0x7f070003;

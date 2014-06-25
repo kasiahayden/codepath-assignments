@@ -38,7 +38,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
         TextView tvUserName = (TextView) v.findViewById(R.id.tvUserName);
         TextView tvName = (TextView) v.findViewById(R.id.tvName);
         TextView tvBody = (TextView) v.findViewById(R.id.tvBody);
-        TextView tvTimestamp = (TextView) v.findViewById(R.id.tvTimestamp);
+        //TextView tvTimestamp = (TextView) v.findViewById(R.id.tvTimestamp);
         TextView tvRelativeTime = (TextView) v.findViewById(R.id.tvRelativeTime);
         //ivProfileImage.setImageResource(android.R.color.transparent);
         int resId = android.R.color.transparent;
@@ -49,7 +49,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
         tvUserName.setText(tweet.getUser().getScreenName());
         tvName.setText(tweet.getUser().getName());
         tvBody.setText(tweet.getBody());
-        tvTimestamp.setText(tweet.getCreatedAt());
+        //tvTimestamp.setText(tweet.getCreatedAt());
         tvRelativeTime.setText(tweet.getTimeSinceCreated());
         return v;
 

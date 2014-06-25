@@ -1,11 +1,14 @@
 package com.codepath.apps.basictwitter.models;
 
 import android.text.format.DateUtils;
+import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -89,6 +92,8 @@ public class Tweet {
         sf.setLenient(true);
 
         String relativeDate = "";
+        String formattedDate = "";
+        String[] dateArr;
         try {
             long dateMillis = sf.parse(rawJsonDate).getTime();
             relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
@@ -96,7 +101,26 @@ public class Tweet {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return relativeDate;
+        dateArr = relativeDate.split("\\s+");
+        formattedDate = dateArr[0];
+        Log.d("tweet relative1", dateArr[1]);
+        if (dateArr[1].contains("minute")) {
+            Log.d("tweet relative", dateArr[1]);
+            formattedDate += "m";
+        } else if (dateArr[1].contains("hour")) {
+            formattedDate += "h";
+        } else if (dateArr[1].contains("day")) {
+            formattedDate += "d";
+        } else if (dateArr[1].contains("week")) {
+            formattedDate += "w";
+        } else if (dateArr[1].contains("month")) {
+            formattedDate += "mo";
+        } else if (dateArr[1].contains("year")) {
+            formattedDate += "y";
+        }
+
+        //return relativeDate;
+        return formattedDate;
     }
 
     public static String getSimpleDate(String rawJsonDate) {

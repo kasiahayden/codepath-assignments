@@ -2,7 +2,8 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FF3B55">
 
     <ImageView
         android:id="@+id/ivProfileImage"
@@ -10,36 +11,32 @@
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
         android:src="@drawable/ic_launcher"
         />
-
-    <TextView
-        android:id="@+id/tvUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/ivProfileImage"
-        android:text="@string/foo_label" />
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvUserName"
-        android:layout_toRightOf="@+id/tvUserName"
-        android:layout_marginLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/ivProfileImage"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
         android:text="Real name" />
 
     <TextView
-        android:id="@+id/tvBody"
+        android:id="@+id/tvUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvUserName"
-        android:layout_below="@+id/tvUserName"
-        android:autoLink="all"
-        android:linksClickable="true"
-        android:text="This is the tweet body." />
+        android:layout_alignBottom="@+id/tvName"
+        android:layout_toRightOf="@+id/tvName"
+        android:layout_marginLeft="5dp"
+        android:textColor="#666966"
+        android:text="@string/foo_label" />
 
+    <!--
     <TextView
         android:id="@+id/tvTimestamp"
         android:layout_width="wrap_content"
@@ -48,16 +45,68 @@
         android:layout_toRightOf="@+id/tvBody"
         android:layout_marginLeft="10dp"
         android:text="Timestamp" />
+    -->
 
     <TextView
         android:id="@+id/tvRelativeTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvTimestamp"
-        android:layout_toRightOf="@+id/tvTimestamp"
-        android:layout_marginLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:textColor="#838583"
         android:text="Relative Time" />
 
+    <TextView
+        android:id="@+id/tvBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvName"
+        android:layout_below="@+id/tvName"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:text="This is the tweet body." />
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBody"
+        android:layout_alignLeft="@+id/tvBody"
+        android:layout_toLeftOf="@+id/tvRelativeTime">
+
+        <ImageView
+            android:id="@+id/ivReply"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/tvBody"
+            android:layout_alignLeft="@+id/tvBody"
+            android:src="@drawable/ic_reply"
+            />
+
+        <ImageView
+            android:id="@+id/ivRetweet"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:layout_below="@+id/tvBody"
+            android:layout_toRightOf="@+id/ivReply"
+            android:src="@drawable/ic_retweet"
+            />
+
+        <ImageView
+            android:id="@+id/ivStar"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/tvBody"
+            android:layout_toRightOf="@+id/ivRetweet"
+            android:src="@drawable/ic_star"
+            />
+
+
+        </LinearLayout>
 
 </RelativeLayout>
 
