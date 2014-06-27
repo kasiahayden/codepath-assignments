@@ -550,10 +550,12 @@
     <string name="composePrompt">What\'s happening?</string>
     <string name="count">0</string>
     <string name="foo_label">\@foo</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_world">Hello world!</string>
     <string name="login_label">Connect to Twitter</string>
     <string name="title_activity_compose">ComposeActivity</string>
     <string name="title_activity_photos">Flickr Photos</string>
+    <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_timeline">TimelineActivity</string>
     <string name="tweet">TWEET</string>
     <!-- From: file:/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/values/styles.xml -->

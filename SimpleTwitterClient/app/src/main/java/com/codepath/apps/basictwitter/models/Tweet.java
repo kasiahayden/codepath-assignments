@@ -102,21 +102,28 @@ public class Tweet {
             e.printStackTrace();
         }
         dateArr = relativeDate.split("\\s+");
-        formattedDate = dateArr[0];
-        Log.d("tweet relative1", dateArr[1]);
-        if (dateArr[1].contains("minute")) {
-            Log.d("tweet relative", dateArr[1]);
-            formattedDate += "m";
-        } else if (dateArr[1].contains("hour")) {
-            formattedDate += "h";
-        } else if (dateArr[1].contains("day")) {
-            formattedDate += "d";
-        } else if (dateArr[1].contains("week")) {
-            formattedDate += "w";
-        } else if (dateArr[1].contains("month")) {
-            formattedDate += "mo";
-        } else if (dateArr[1].contains("year")) {
-            formattedDate += "y";
+        try {
+            formattedDate = dateArr[0];
+            Log.d("tweet relative1", dateArr[1]);
+            if (dateArr[1].contains("second")) {
+                Log.d("tweet relative", dateArr[1]);
+                formattedDate += "s";
+            } else if (dateArr[1].contains("minute")) {
+                Log.d("tweet relative", dateArr[1]);
+                formattedDate += "m";
+            } else if (dateArr[1].contains("hour")) {
+                formattedDate += "h";
+            } else if (dateArr[1].contains("day")) {
+                formattedDate += "d";
+            } else if (dateArr[1].contains("week")) {
+                formattedDate += "w";
+            } else if (dateArr[1].contains("month")) {
+                formattedDate += "mo";
+            } else if (dateArr[1].contains("year")) {
+                formattedDate += "y";
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
         }
 
         //return relativeDate;

@@ -6,11 +6,14 @@ import org.json.JSONObject;
 /**
  * Created by khayden on 6/19/14.
  */
-public class User {
+public class User { //TODO change to User extends BaseModel
     private String name;
     private long uid;
     private String screenName;
     private String profileImageUrl;
+    private String description;
+    private String friendsCount;
+    private String followersCount;
 
     public static User fromJSON(JSONObject json) {
         User u = new User();
@@ -19,6 +22,9 @@ public class User {
             u.uid = json.getLong("id");
             u.screenName = json.getString("screen_name");
             u.profileImageUrl = json.getString("profile_image_url");
+            u.description = json.getString("description");
+            u.friendsCount = json.getString("friendsCount");
+            u.followersCount = json.getString("followersCount");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -39,5 +45,18 @@ public class User {
 
     public String getProfileImageUrl() {
         return profileImageUrl;
+    }
+
+    public String getFriendsCount() {
+        return friendsCount;
+    }
+
+    public String getTagline() {
+        // TODO make each method like: return getString("description");
+        return description;
+    }
+
+    public String getFollowersCount() {
+        return followersCount;
     }
 }

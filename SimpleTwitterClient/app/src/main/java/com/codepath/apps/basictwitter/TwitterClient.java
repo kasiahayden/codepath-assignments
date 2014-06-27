@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.codepath.oauth.OAuthBaseClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 /*
@@ -47,7 +48,7 @@ public class TwitterClient extends OAuthBaseClient {
     }
 
     //https://api.twitter.com/1.1/account/verify_credentials.json
-    public void getCurrentUser(AsyncHttpResponseHandler handler) {
+    public void getMyInfo(AsyncHttpResponseHandler handler) { //formerly getCurrentUser
         String apiUrl = getApiUrl("account/verify_credentials.json");
         client.get(apiUrl, null, handler);
     }
@@ -61,7 +62,21 @@ public class TwitterClient extends OAuthBaseClient {
         client.post(apiUrl, requestParams, handler);
     }
 
-    
+    // TODO change this to support pagination with maxID
+    //https://api.twitter.com/1.1/statuses/mentions_timeline.json
+    public void getMentionsTimeline(AsyncHttpResponseHandler handler, long since_id, long max_id) { //was Json
+        String apiUrl = getApiUrl("statuses/mentions_timeline.json");
+        client.get(apiUrl, null, handler);
+    }
+
+    public void getUserTimeline(AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("statuses/user_timeline.json");
+        client.get(apiUrl, null, handler);
+    }
+
+
+
+
     // CHANGE THIS
     // DEFINE METHODS for different API endpoints here
     /*public void getInterestingnessList(AsyncHttpResponseHandler handler) {
