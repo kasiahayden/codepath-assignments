@@ -151,4 +151,7 @@ public class Tweet {
         return newDateString;
     }
 
+    public void onProfileImageSelected(){
+        //Toast.makeText(getContext(), "onProfileImageSelected", Toast.LENGTH_LONG).show();
+    }
 }

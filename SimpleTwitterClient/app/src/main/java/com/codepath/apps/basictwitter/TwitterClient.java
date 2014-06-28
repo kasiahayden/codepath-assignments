@@ -37,20 +37,36 @@ public class TwitterClient extends OAuthBaseClient {
     }
 
     // https://api.twitter.com/1.1/statuses/home_timeline.json
-    public void getHomeTimeline(AsyncHttpResponseHandler handler, long since_id, long max_id) {
+    //public void getHomeTimeline(AsyncHttpResponseHandler handler, long since_id, long max_id) {
+    public void getHomeTimeline(AsyncHttpResponseHandler handler, long max_id) {
         String apiUrl = getApiUrl("statuses/home_timeline.json");
         RequestParams requestParams = new RequestParams();
-        requestParams.put("since_id", "since_id"); //Long.toString(since_id)
+        requestParams.put("max_id", Long.toString(max_id)); //
         if (max_id >= 0) {
             requestParams.put("max_id", Long.toString(max_id));
         }
         client.get(apiUrl, null, handler);
     }
 
+    /*public void getHomeTimeline(AsyncHttpResponseHandler handler, long max_id) {
+        String apiUrl = getApiUrl("statuses/home_timeline.json");
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("max_id", Long.toString(max_id)); //
+        client.get(apiUrl, null, handler);
+    }*/
+
     //https://api.twitter.com/1.1/account/verify_credentials.json
     public void getMyInfo(AsyncHttpResponseHandler handler) { //formerly getCurrentUser
         String apiUrl = getApiUrl("account/verify_credentials.json");
         client.get(apiUrl, null, handler);
+    }
+
+    public void getUserInfo(AsyncHttpResponseHandler handler, String screen_name) {
+        String apiUrl = getApiUrl("statuses/user_timeline.json");
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("screen_name", screen_name);
+        client.get(apiUrl, requestParams, handler);
+
     }
 
     //https://api.twitter.com/1.1/statuses/update.json
@@ -64,7 +80,8 @@ public class TwitterClient extends OAuthBaseClient {
 
     // TODO change this to support pagination with maxID
     //https://api.twitter.com/1.1/statuses/mentions_timeline.json
-    public void getMentionsTimeline(AsyncHttpResponseHandler handler, long since_id, long max_id) { //was Json
+    //public void getMentionsTimeline(AsyncHttpResponseHandler handler, long since_id, long max_id) { //was Json
+    public void getMentionsTimeline(AsyncHttpResponseHandler handler, long max_id) {
         String apiUrl = getApiUrl("statuses/mentions_timeline.json");
         client.get(apiUrl, null, handler);
     }

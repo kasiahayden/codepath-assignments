@@ -15,34 +15,16 @@ import org.json.JSONArray;
  */
 public class MentionsTimelineFragment extends TweetsListFragment {
 
-    private TwitterClient client;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // TODO move the twitter client code back into TweetsListFragment so not duplicated in MentionsTimelineFragment and HomeTimelineFragment
         // TODO endless pagination in TweetsListFragment
-        client = TwitterApplication.getRestClient();
 
-        populateTimeline(1, -1);
+        populateTimeline(-1);
     }
 
-    public void populateTimeline(long since_id, long max_id){
-        client.getMentionsTimeline(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(JSONArray json) {
-                addAll(Tweet.fromJSONArray(json));
-
-                /*//Toast.makeText(getApplicationContext(), "populateTimeline success", Toast.LENGTH_SHORT).show();
-                Log.d("debug", json.toString());
-                ArrayList<Tweet> tweets = Tweet.fromJSONArray(json);
-                setMaxId(tweets);*/
-            }
-
-            @Override
-            public void onFailure(Throwable e, String s) {
-                Log.d("debug", e.toString());
-            }
-        }, since_id, max_id);
+    public void populateTimeline(long max_id){
+        client.getMentionsTimeline(getHandler(), max_id);
     }
 }

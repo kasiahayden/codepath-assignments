@@ -8,6 +8,9 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.app.ActionBar.TabListener;
 
@@ -89,4 +92,26 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
     public void onTabReselected(android.support.v7.app.ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
 
     }
+
+    public void onProfileImageSelected(View v) {
+        //Toast.makeText(this, "onProfileImageSelected", Toast.LENGTH_LONG).show();
+        //ImageView imageView = (ImageView) findViewById(R.id.ivProfileImage);
+        //String user_name = "unset";
+
+        //Log.d("TimelineActivity", user_name);
+        //Toast.makeText(this, "TimelineActivity: un: " + user_name, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "onProfileImageSelected: " + tvUserName.getText().toString(), Toast.LENGTH_LONG).show();
+        // TODO fix so not only the most recent view is called
+        TextView tvUserName = (TextView) findViewById(R.id.tvUserName);
+
+
+        Intent i = new Intent(this, ProfileActivity.class);
+        if (tvUserName != null) {
+            //Toast.makeText(this, "onProfileImageSelected: " + tvUserName.getText().toString(), Toast.LENGTH_LONG).show();
+            //user_name = tvUserName.getText().toString();
+            i.putExtra("user_name", tvUserName.getText().toString());
+        }
+        startActivity(i);
+    }
+
 }

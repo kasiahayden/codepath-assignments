@@ -3,10 +3,12 @@ package com.codepath.apps.basictwitter.models;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by khayden on 6/19/14.
  */
-public class User { //TODO change to User extends BaseModel
+public class User implements Serializable { //TODO change to User extends BaseModel
     private String name;
     private long uid;
     private String screenName;
@@ -23,8 +25,8 @@ public class User { //TODO change to User extends BaseModel
             u.screenName = json.getString("screen_name");
             u.profileImageUrl = json.getString("profile_image_url");
             u.description = json.getString("description");
-            u.friendsCount = json.getString("friendsCount");
-            u.followersCount = json.getString("followersCount");
+            u.friendsCount = json.getString("friends_count");
+            u.followersCount = json.getString("followers_count");
         } catch (JSONException e) {
             e.printStackTrace();
         }

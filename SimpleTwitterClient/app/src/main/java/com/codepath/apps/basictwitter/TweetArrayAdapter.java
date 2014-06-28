@@ -1,12 +1,14 @@
 package com.codepath.apps.basictwitter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.codepath.apps.basictwitter.models.Tweet;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -17,6 +19,8 @@ import java.util.List;
  * Created by khayden on 6/19/14.
  */
 public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
+    Intent i;
+
     public TweetArrayAdapter(Context context, List<Tweet> tweets) {
         super(context, 0, tweets);
     }
@@ -42,6 +46,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
         TextView tvRelativeTime = (TextView) v.findViewById(R.id.tvRelativeTime);
         //ivProfileImage.setImageResource(android.R.color.transparent);
         int resId = android.R.color.transparent;
+        //getContext().getResources().getDrawable(android.R.color.transparent)
         ivProfileImage.setImageResource(resId);
         ImageLoader imageLoader = ImageLoader.getInstance();
         // Populate views with tweet data
@@ -51,6 +56,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
         tvBody.setText(tweet.getBody());
         //tvTimestamp.setText(tweet.getCreatedAt());
         tvRelativeTime.setText(tweet.getTimeSinceCreated());
+
         return v;
 
 //        TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
@@ -61,5 +67,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 //        // Return the completed view to render on screen
 //        return convertView;
     }
+
+
 
 }

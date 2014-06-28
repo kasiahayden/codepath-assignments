@@ -28,8 +28,8 @@ import java.util.ArrayList;
  * Created by khayden on 6/26/14.
  */
 public class HomeTimelineFragment extends TweetsListFragment {
-    private TwitterClient client;
-    /*long maxTweetId = Integer.MAX_VALUE;
+    //private TwitterClient client;
+    /*
     private final int REQUEST_CODE = 20;
     User user;
     private TweetsListFragment fragmentTweetsList;*/
@@ -37,9 +37,9 @@ public class HomeTimelineFragment extends TweetsListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        client = TwitterApplication.getRestClient();
+        //client = TwitterApplication.getRestClient();
 
-        populateTimeline(1, -1);
+        //populateTimeline(-1);
         /*setCurrentUser();
         fragmentTweetsList = (TweetsListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_timeline);
         */
@@ -62,24 +62,10 @@ public class HomeTimelineFragment extends TweetsListFragment {
         return true;
     }*/
 
-    public void populateTimeline(long since_id, long max_id){
-        client.getHomeTimeline(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(JSONArray json) {
-                addAll(Tweet.fromJSONArray(json));
-
-                /*//Toast.makeText(getApplicationContext(), "populateTimeline success", Toast.LENGTH_SHORT).show();
-                Log.d("debug", json.toString());
-                ArrayList<Tweet> tweets = Tweet.fromJSONArray(json);
-                setMaxId(tweets);*/
-            }
-
-            @Override
-            public void onFailure(Throwable e, String s) {
-                Log.d("debug", e.toString());
-            }
-        }, since_id, max_id);
+    public void populateTimeline(long max_id){
+        client.getHomeTimeline(getHandler(), max_id);
     }
+
 
     /*public void setCurrentUser(){
         //Toast.makeText(getApplicationContext(), "getUser", Toast.LENGTH_SHORT).show();
@@ -151,22 +137,7 @@ public class HomeTimelineFragment extends TweetsListFragment {
         populateTimeline(1, maxTweetId);
     }*/
 
-    /*public void setMaxId(ArrayList<Tweet> tweets) {
-        for (Tweet tweet : tweets) {
-            long currentTweetId = tweet.getTweetId();
-            if (currentTweetId < maxTweetId) {
-                maxTweetId = currentTweetId - 1;
-                // "since the max_id parameter is inclusive,
-                // the Tweet with the matching ID will actually be returned again...
-                // Subtract 1 from the lowest Tweet ID returned from the previous request
-                // and use this for the value of max_id. It does not matter if this
-                // adjusted max_id is a valid Tweet ID, or if it corresponds with a
-                // Tweet posted by a different user - the value is just used to
-                // decide which Tweets to filter. When adjusted in this manner, it is
-                // possible to page through a timeline without receiving redundant Tweets."
-            }
-        }
-    }*/
+
 
     /*public void composeMessage() {
         //Toast.makeText(this, "compose message", Toast.LENGTH_LONG).show();
@@ -205,5 +176,6 @@ public class HomeTimelineFragment extends TweetsListFragment {
                 return super.onOptionsItemSelected(item);
         }
     }*/
+
 
 }

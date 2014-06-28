@@ -964,7 +964,7 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f070026;
         public static final int expanded_menu=0x7f07002c;
         public static final int flContainer=0x7f070048;
-        public static final int fragmentUserTimeline=0x7f070047;
+        public static final int flProfileContainer=0x7f070047;
         public static final int home=0x7f070017;
         public static final int homeAsUp=0x7f070005;
         public static final int icon=0x7f07002a;
