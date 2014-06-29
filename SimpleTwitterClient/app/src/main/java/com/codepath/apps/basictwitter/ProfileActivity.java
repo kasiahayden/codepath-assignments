@@ -2,6 +2,7 @@ package com.codepath.apps.basictwitter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -108,12 +110,13 @@ public class ProfileActivity extends FragmentActivity {
         TextView tvName = (TextView) findViewById(R.id.tvName);
         TextView tvTagline = (TextView) findViewById(R.id.tvTagline);
         TextView tvFollowers = (TextView) findViewById(R.id.tvFollowers);
-        TextView tvFollowing = (TextView) findViewById(R.id.tvFollowing);
+        //TextView tvFollowing = (TextView) findViewById(R.id.tvFollowing);
+        Button tvFollowing = (Button) findViewById(R.id.tvFollowing); //TODO change back
         ImageView ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
         tvName.setText(user.getName());
         tvTagline.setText(user.getTagline());
-        tvFollowers.setText(user.getFriendsCount() + " Following");
-        tvFollowing.setText(user.getFollowersCount() + " Followers");
+        tvFollowers.setText(user.getFollowersCount() + " Followers");
+        tvFollowing.setText(user.getFriendsCount() + " Following!!!");
         ImageLoader.getInstance().displayImage(user.getProfileImageUrl(), ivProfileImage);
     }
 
@@ -152,5 +155,19 @@ public class ProfileActivity extends FragmentActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClickFollowers(View v) {
+        Toast.makeText(this, "ProfileActivity: onClickFollowers", Toast.LENGTH_SHORT).show();
+        Log.d("ProfileActivity", "onClickFollowers");
+        Intent i = new Intent(this, FollowActivity.class);
+        startActivity(i);
+    }
+
+    public void onClickFollowing(View v) {
+        Toast.makeText(this, "ProfileActivity: onClickFollowing", Toast.LENGTH_SHORT).show();
+        Log.d("ProfileActivity", "onClickFollowing");
+        Intent i = new Intent(this, FollowActivity.class);
+        startActivity(i);
     }
 }

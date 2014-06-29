@@ -554,6 +554,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="login_label">Connect to Twitter</string>
     <string name="title_activity_compose">ComposeActivity</string>
+    <string name="title_activity_follow">FollowActivity</string>
     <string name="title_activity_photos">Flickr Photos</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_timeline">TimelineActivity</string>

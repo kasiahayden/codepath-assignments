@@ -56,6 +56,10 @@
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
+        <activity
+            android:name=".FollowActivity"
+            android:label="@string/title_activity_follow" >
+        </activity>
     </application>
 
 </manifest>

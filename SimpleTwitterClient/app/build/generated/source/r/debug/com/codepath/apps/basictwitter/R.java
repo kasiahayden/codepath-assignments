@@ -935,6 +935,8 @@ containing a value of this type.
         public static final int ic_reply=0x7f02005c;
         public static final int ic_retweet=0x7f02005d;
         public static final int ic_star=0x7f02005e;
+        public static final int ic_user_follow=0x7f02005f;
+        public static final int ic_user_unfollow=0x7f020060;
     }
     public static final class id {
         public static final int action_bar=0x7f07001c;
@@ -948,10 +950,11 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f070015;
         public static final int action_menu_presenter=0x7f070016;
         public static final int action_mode_close_button=0x7f070024;
-        public static final int action_settings=0x7f07004f;
+        public static final int action_settings=0x7f070051;
         public static final int activity_chooser_view_content=0x7f070025;
         public static final int always=0x7f07000f;
         public static final int beginning=0x7f07000a;
+        public static final int btnFollow=0x7f070050;
         public static final int btnTweet=0x7f070040;
         public static final int checkbox=0x7f07002d;
         public static final int collapseActionView=0x7f070011;
@@ -963,23 +966,24 @@ containing a value of this type.
         public static final int end=0x7f07000c;
         public static final int expand_activities_button=0x7f070026;
         public static final int expanded_menu=0x7f07002c;
-        public static final int flContainer=0x7f070048;
-        public static final int flProfileContainer=0x7f070047;
+        public static final int flContainer=0x7f070049;
+        public static final int flFollowContainer=0x7f070042;
+        public static final int flProfileContainer=0x7f070048;
         public static final int home=0x7f070017;
         public static final int homeAsUp=0x7f070005;
         public static final int icon=0x7f07002a;
         public static final int ifRoom=0x7f07000e;
         public static final int image=0x7f070027;
-        public static final int item1=0x7f070051;
+        public static final int item1=0x7f070053;
         public static final int ivProfileImage=0x7f07003c;
-        public static final int ivReply=0x7f07004c;
-        public static final int ivRetweet=0x7f07004d;
-        public static final int ivStar=0x7f07004e;
+        public static final int ivReply=0x7f07004d;
+        public static final int ivRetweet=0x7f07004e;
+        public static final int ivStar=0x7f07004f;
         public static final int listMode=0x7f070001;
         public static final int list_item=0x7f070029;
-        public static final int llCounts=0x7f070044;
-        public static final int lvTweets=0x7f070049;
-        public static final int miCompose=0x7f070050;
+        public static final int llCounts=0x7f070045;
+        public static final int lvTweets=0x7f07004a;
+        public static final int miCompose=0x7f070052;
         public static final int middle=0x7f07000b;
         public static final int never=0x7f07000d;
         public static final int none=0x7f070009;
@@ -987,7 +991,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f070018;
         public static final int progress_horizontal=0x7f070019;
         public static final int radio=0x7f07002f;
-        public static final int rlHeader=0x7f070042;
+        public static final int rlHeader=0x7f070043;
         public static final int search_badge=0x7f070032;
         public static final int search_bar=0x7f070031;
         public static final int search_button=0x7f070033;
@@ -1009,13 +1013,13 @@ containing a value of this type.
         public static final int top_action_bar=0x7f070020;
         public static final int tvBody=0x7f070041;
         public static final int tvCharacterCount=0x7f07003f;
-        public static final int tvFollowers=0x7f070045;
+        public static final int tvFollowers=0x7f070047;
         public static final int tvFollowing=0x7f070046;
         public static final int tvName=0x7f07003d;
-        public static final int tvRelativeTime=0x7f07004b;
+        public static final int tvRelativeTime=0x7f07004c;
         public static final int tvScreenName=0x7f07003e;
-        public static final int tvTagline=0x7f070043;
-        public static final int tvUserName=0x7f07004a;
+        public static final int tvTagline=0x7f070044;
+        public static final int tvUserName=0x7f07004b;
         public static final int up=0x7f070021;
         public static final int useLogo=0x7f070003;
         public static final int withText=0x7f070010;
@@ -1049,20 +1053,25 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_compose=0x7f030018;
-        public static final int activity_login=0x7f030019;
-        public static final int activity_profile=0x7f03001a;
-        public static final int activity_timeline=0x7f03001b;
-        public static final int fragment_tweets_list=0x7f03001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
-        public static final int tweet_item=0x7f03001e;
+        public static final int activity_follow=0x7f030019;
+        public static final int activity_login=0x7f03001a;
+        public static final int activity_profile=0x7f03001b;
+        public static final int activity_timeline=0x7f03001c;
+        public static final int fragment_followers=0x7f03001d;
+        public static final int fragment_following=0x7f03001e;
+        public static final int fragment_tweets_list=0x7f03001f;
+        public static final int support_simple_spinner_dropdown_item=0x7f030020;
+        public static final int tweet_item=0x7f030021;
+        public static final int user_item=0x7f030022;
     }
     public static final class menu {
         public static final int compose=0x7f0c0000;
-        public static final int login=0x7f0c0001;
-        public static final int photos=0x7f0c0002;
-        public static final int profile=0x7f0c0003;
-        public static final int timeline=0x7f0c0004;
-        public static final int tweets=0x7f0c0005;
+        public static final int follow=0x7f0c0001;
+        public static final int login=0x7f0c0002;
+        public static final int photos=0x7f0c0003;
+        public static final int profile=0x7f0c0004;
+        public static final int timeline=0x7f0c0005;
+        public static final int tweets=0x7f0c0006;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f0a0000;
@@ -1087,10 +1096,11 @@ containing a value of this type.
         public static final int hello_world=0x7f0a0013;
         public static final int login_label=0x7f0a0014;
         public static final int title_activity_compose=0x7f0a0015;
-        public static final int title_activity_photos=0x7f0a0016;
-        public static final int title_activity_profile=0x7f0a0017;
-        public static final int title_activity_timeline=0x7f0a0018;
-        public static final int tweet=0x7f0a0019;
+        public static final int title_activity_follow=0x7f0a0016;
+        public static final int title_activity_photos=0x7f0a0017;
+        public static final int title_activity_profile=0x7f0a0018;
+        public static final int title_activity_timeline=0x7f0a0019;
+        public static final int tweet=0x7f0a001a;
     }
     public static final class style {
         /** 

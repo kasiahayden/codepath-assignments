@@ -2,13 +2,11 @@ package com.codepath.apps.basictwitter.models;
 
 import android.text.format.DateUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,7 +23,7 @@ public class Tweet {
     private String timeSinceCreated;
     private User user;
 
-    public static Tweet fromJson(JSONObject jsonObject) {
+    public static Tweet fromJSON(JSONObject jsonObject) {
         Tweet tweet = new Tweet();
         // Extract values from json to populate the member variables
         try {
@@ -72,7 +70,7 @@ public class Tweet {
                 continue;
             }
 
-            Tweet tweet = Tweet.fromJson(tweetJson);
+            Tweet tweet = Tweet.fromJSON(tweetJson);
             if (tweet != null) {
                 tweets.add(tweet);
             }

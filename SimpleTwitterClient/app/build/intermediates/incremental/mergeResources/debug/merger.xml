@@ -4764,16 +4764,16 @@ useLogo|showHome|showTitle
                     msgid="2031811694353399454" >"Επιλέξτε κάποια εφαρμογή"
                 </string>
                 <string
+                    name="abc_searchview_description_voice"
+                    msgid="893419373245838918" >"Φωνητική αναζήτηση"
+                </string>
+                <string
                     name="abc_action_menu_overflow_description"
                     msgid="3588849162933574182" >"Περισσότερες επιλογές"
                 </string>
                 <string
                     name="abc_searchview_description_clear"
                     msgid="3691816814315814921" >"Διαγραφή ερωτήματος"
-                </string>
-                <string
-                    name="abc_searchview_description_voice"
-                    msgid="893419373245838918" >"Φωνητική αναζήτηση"
                 </string>
             </file>
             <file
@@ -6095,16 +6095,16 @@ false
                     msgid="4076576682505996667" >"Atlikta"
                 </string>
                 <string
+                    name="abc_searchview_description_search"
+                    msgid="8264924765203268293" >"Paieška"
+                </string>
+                <string
                     name="abc_shareactionprovider_share_with_application"
                     msgid="7165123711973476752" >"Bendrinti naudojant „%s“"
                 </string>
                 <string
                     name="abc_action_bar_home_description"
                     msgid="4600421777120114993" >"Eiti į pagrindinį puslapį"
-                </string>
-                <string
-                    name="abc_searchview_description_search"
-                    msgid="8264924765203268293" >"Paieška"
                 </string>
             </file>
             <file
@@ -8332,6 +8332,8 @@ false
                 </string>
                 <string name="title_activity_profile" >ProfileActivity
                 </string>
+                <string name="title_activity_follow" >FollowActivity
+                </string>
                 <string name="hello_world" >Hello world!
                 </string>
                 <string name="tweet" >TWEET
@@ -8572,6 +8574,71 @@ false
                 path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/menu/tweets.xml"
                 qualifiers=""
                 type="menu" />
+            <file
+                name="ic_user_unfollow"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/drawable-xxhdpi/ic_user_unfollow.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_user_follow"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/drawable-mdpi/ic_user_follow.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_user_follow"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/drawable-xxhdpi/ic_user_follow.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="activity_follow"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/layout/activity_follow.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="ic_user_unfollow"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/drawable-mdpi/ic_user_unfollow.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="fragment_followers"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/layout/fragment_followers.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="ic_user_follow"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/drawable-xhdpi/ic_user_follow.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="follow"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/menu/follow.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="fragment_following"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/layout/fragment_following.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="ic_user_follow"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/drawable-hdpi/ic_user_follow.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_user_unfollow"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/drawable-hdpi/ic_user_unfollow.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_user_unfollow"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/drawable-xhdpi/ic_user_unfollow.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="user_item"
+                path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/layout/user_item.xml"
+                qualifiers=""
+                type="layout" />
         </source>
         <source path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/build/generated/res/rs/debug" />
         <source path="/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/build/generated/res/generated/debug" />

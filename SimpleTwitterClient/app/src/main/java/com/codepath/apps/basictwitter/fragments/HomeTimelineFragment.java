@@ -94,7 +94,7 @@ public class HomeTimelineFragment extends TweetsListFragment {
                 String created_at = "now";
                 try {
                     json = new JSONObject(response);
-                    Tweet tweet = Tweet.fromJson(json);
+                    Tweet tweet = Tweet.fromJSON(json);
                     fragmentTweetsList.add(tweet);
                     fragmentTweetsList.notifyDataSetChanged();
                     fragmentTweetsList.clear();

@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<!--
+android:background="#FF3B55"
+-->
+
+
+<ImageView
+    android:id="@+id/ivProfileImage"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="5dp"
+    android:src="@drawable/ic_launcher"
+    android:onClick="onProfileImageSelected"
+    />
+
+<TextView
+    android:id="@+id/tvName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_toRightOf="@+id/ivProfileImage"
+    android:layout_marginLeft="20dp"
+    android:textStyle="bold"
+    android:text="Real name" />
+
+<TextView
+    android:id="@+id/tvUserName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/tvName"
+    android:layout_alignLeft="@+id/tvName"
+    android:layout_alignStart="@+id/tvName"
+    android:text="@string/foo_label" />
+
+
+<Button
+    android:id="@+id/btnFollow"
+    android:layout_width="40dp"
+    android:layout_height="20dp"
+    android:layout_alignTop="@+id/ivProfileImage"
+    android:layout_alignParentRight="true"
+    android:src="@drawable/ic_user_follow"
+    android:text="Follow/Unfollow" />
+
+
+<TextView
+    android:id="@+id/tvBody"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:autoLink="all"
+    android:linksClickable="true"
+    android:text="This is the user's description."
+    android:layout_below="@+id/tvUserName"
+    android:layout_alignLeft="@+id/tvUserName"
+    android:layout_alignStart="@+id/tvUserName" />
+
+
+
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/tvBody"
+    android:layout_alignLeft="@+id/tvBody"
+    android:layout_toLeftOf="@+id/tvRelativeTime">
+
+
+
+</LinearLayout>
+
+
+
+</RelativeLayout>
+

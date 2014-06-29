@@ -56,6 +56,10 @@
             android:name="com.codepath.apps.basictwitter.ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
+        <activity
+            android:name="com.codepath.apps.basictwitter.FollowActivity"
+            android:label="@string/title_activity_follow" >
+        </activity>
     </application>
 
 </manifest>
