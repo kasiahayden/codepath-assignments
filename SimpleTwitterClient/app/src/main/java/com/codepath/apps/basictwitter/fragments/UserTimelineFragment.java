@@ -43,7 +43,7 @@ public class UserTimelineFragment extends TweetsListFragment {
             }
         });*/
 
-        Bundle bUser = getArguments();
+        /*Bundle bUser = getArguments();
         user = (User) bUser.getSerializable("user");
 
         if (bUser != null) {
@@ -57,8 +57,16 @@ public class UserTimelineFragment extends TweetsListFragment {
             public void onSuccess(JSONArray jsonTweets) {
                 addAll(Tweet.fromJSONArray(jsonTweets));
             }
-        }, user.getScreenName());
+        }, user.getScreenName());*/
 
+        String screenName = getArguments().getString("screenName");
+
+        TwitterApplication.getRestClient().getUserInfo(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(JSONArray jsonTweets) {
+                addAll(Tweet.fromJSONArray(jsonTweets));
+            }
+        }, screenName);
 
     }
 

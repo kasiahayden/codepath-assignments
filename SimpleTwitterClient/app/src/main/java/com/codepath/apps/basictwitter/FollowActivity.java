@@ -21,26 +21,43 @@ public class FollowActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow);
-        populateFollowList(savedInstanceState);
+        //populateFollowList(savedInstanceState); //TODO fix
     }
 
 
-    private void populateFollowList(Bundle savedInstanceState) {
+    private void populateFollowList(Bundle savedInstanceState, User u) { //Pass current user's profile
         if (findViewById(R.id.flFollowContainer) != null) {
             if (savedInstanceState != null) {
                 return;
             }
 
             FollowingFragment followingFragment = new FollowingFragment();
-            /*Bundle bUser = new Bundle();
+            Bundle bUser = new Bundle();
             bUser.putSerializable("user", u);
             //bUser.putString("test", "123");
-            userTimelineFragment.setArguments(bUser);*/
+            followingFragment.setArguments(bUser);
 
-            followingFragment.setArguments(getIntent().getExtras());
+            //followingFragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.flFollowContainer, followingFragment).commit();
 
+        }
+    }
+    private void populateUserTimeline(Bundle savedInstanceState, User u) {
+        if (findViewById(R.id.flProfileContainer) != null) {
+            if (savedInstanceState != null) {
+                return;
+            }
+            UserTimelineFragment userTimelineFragment = new UserTimelineFragment();
+            // TODO add User u argument
+            Bundle bUser = new Bundle();
+            bUser.putSerializable("user", u);
+            //bUser.putString("test", "123");
+            userTimelineFragment.setArguments(bUser);
+
+            //userTimelineFragment.setArguments(getIntent().getExtras());
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.flProfileContainer, userTimelineFragment).commit();
         }
     }
 

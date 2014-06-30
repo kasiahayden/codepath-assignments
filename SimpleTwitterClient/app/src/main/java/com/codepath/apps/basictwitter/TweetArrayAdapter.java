@@ -39,8 +39,8 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
         }
         // Find the views within the template
         ImageView ivProfileImage = (ImageView) v.findViewById(R.id.ivProfileImage);
+        TextView tvScreenName = (TextView) v.findViewById(R.id.tvScreenName);
         TextView tvUserName = (TextView) v.findViewById(R.id.tvUserName);
-        TextView tvName = (TextView) v.findViewById(R.id.tvName);
         TextView tvBody = (TextView) v.findViewById(R.id.tvBody);
         //TextView tvTimestamp = (TextView) v.findViewById(R.id.tvTimestamp);
         TextView tvRelativeTime = (TextView) v.findViewById(R.id.tvRelativeTime);
@@ -51,8 +51,8 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
         ImageLoader imageLoader = ImageLoader.getInstance();
         // Populate views with tweet data
         imageLoader.displayImage(tweet.getUser().getProfileImageUrl(), ivProfileImage);
-        tvUserName.setText(tweet.getUser().getScreenName());
-        tvName.setText(tweet.getUser().getName());
+        tvScreenName.setText(tweet.getUser().getScreenName());
+        tvUserName.setText(tweet.getUser().getName());
         tvBody.setText(tweet.getBody());
         //tvTimestamp.setText(tweet.getCreatedAt());
         tvRelativeTime.setText(tweet.getTimeSinceCreated());

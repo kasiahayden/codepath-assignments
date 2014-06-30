@@ -30,12 +30,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class TimelineActivity extends FragmentActivity implements TabListener {
+    User appUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
         setupTabs();
+        setAppUser();
     }
 
     private void setupTabs() {
@@ -67,8 +69,30 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
         actionBar.addTab(tab2);
     }
 
+    public void setAppUser() {
+        TwitterApplication.getRestClient().getMyInfo(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(JSONObject json) {
+                appUser = User.fromJSON(json);
+            }
+        });
+    }
+
     public void onProfileView(MenuItem mi) {
+        startProfileActivity(appUser.getScreenName().toString());
+    }
+
+    public void onProfileImageSelected(View v) {
+        // TODO fix bug: top view visible in screen is selected
+        TextView tvScreenName = (TextView) findViewById(R.id.tvScreenName);
+        String screenName = tvScreenName.getText().toString();
+        Toast.makeText(this, "TA: sn: " + screenName, Toast.LENGTH_SHORT).show();
+        startProfileActivity(screenName);
+    }
+
+    public void startProfileActivity(String screenName) {
         Intent i = new Intent(this, ProfileActivity.class);
+        i.putExtra("screenName", screenName);
         startActivity(i);
     }
 
@@ -92,26 +116,4 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
     public void onTabReselected(android.support.v7.app.ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
 
     }
-
-    public void onProfileImageSelected(View v) {
-        //Toast.makeText(this, "onProfileImageSelected", Toast.LENGTH_LONG).show();
-        //ImageView imageView = (ImageView) findViewById(R.id.ivProfileImage);
-        //String user_name = "unset";
-
-        //Log.d("TimelineActivity", user_name);
-        //Toast.makeText(this, "TimelineActivity: un: " + user_name, Toast.LENGTH_LONG).show();
-        //Toast.makeText(this, "onProfileImageSelected: " + tvUserName.getText().toString(), Toast.LENGTH_LONG).show();
-        // TODO fix so not only the most recent view is called
-        TextView tvUserName = (TextView) findViewById(R.id.tvUserName);
-
-
-        Intent i = new Intent(this, ProfileActivity.class);
-        if (tvUserName != null) {
-            //Toast.makeText(this, "onProfileImageSelected: " + tvUserName.getText().toString(), Toast.LENGTH_LONG).show();
-            //user_name = tvUserName.getText().toString();
-            i.putExtra("user_name", tvUserName.getText().toString());
-        }
-        startActivity(i);
-    }
-
 }
