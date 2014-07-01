@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import com.codepath.apps.basictwitter.R;
 import com.codepath.apps.basictwitter.fragments.FollowersFragment;
 import com.codepath.apps.basictwitter.fragments.FollowingFragment;
@@ -16,16 +18,19 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONArray;
 
 public class FollowActivity extends FragmentActivity {
+    User profileUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow);
-        //populateFollowList(savedInstanceState); //TODO fix
+        profileUser = (User) getIntent().getSerializableExtra("user");
+        populateFollowList(savedInstanceState, profileUser);
+        Toast.makeText(this, "FollowActivity: onCreate: " + profileUser.getScreenName(), Toast.LENGTH_SHORT).show();
     }
 
 
-    private void populateFollowList(Bundle savedInstanceState, User u) { //Pass current user's profile
+    private void populateFollowList(Bundle savedInstanceState, User user) { //Pass current user's profile
         if (findViewById(R.id.flFollowContainer) != null) {
             if (savedInstanceState != null) {
                 return;
@@ -33,31 +38,15 @@ public class FollowActivity extends FragmentActivity {
 
             FollowingFragment followingFragment = new FollowingFragment();
             Bundle bUser = new Bundle();
-            bUser.putSerializable("user", u);
+            bUser.putSerializable("user", user);
             //bUser.putString("test", "123");
             followingFragment.setArguments(bUser);
+            Toast.makeText(this, "FollowActivity: getScreenName: " + user.getScreenName(), Toast.LENGTH_SHORT).show();
 
             //followingFragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.flFollowContainer, followingFragment).commit();
 
-        }
-    }
-    private void populateUserTimeline(Bundle savedInstanceState, User u) {
-        if (findViewById(R.id.flProfileContainer) != null) {
-            if (savedInstanceState != null) {
-                return;
-            }
-            UserTimelineFragment userTimelineFragment = new UserTimelineFragment();
-            // TODO add User u argument
-            Bundle bUser = new Bundle();
-            bUser.putSerializable("user", u);
-            //bUser.putString("test", "123");
-            userTimelineFragment.setArguments(bUser);
-
-            //userTimelineFragment.setArguments(getIntent().getExtras());
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.flProfileContainer, userTimelineFragment).commit();
         }
     }
 

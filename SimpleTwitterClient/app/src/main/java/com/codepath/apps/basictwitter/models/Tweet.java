@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.Locale;
 /**
  * Created by khayden on 6/19/14.
  */
-public class Tweet {
+public class Tweet implements Serializable{
     private String body;
     private long tweet_id;
     private String createdAt;

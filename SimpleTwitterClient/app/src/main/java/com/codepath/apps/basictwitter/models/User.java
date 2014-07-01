@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class User implements Serializable { //TODO change to User extends BaseModel
 // TODO Serializable still necessary?
-    private String name;
+    private String userName;
     private long uid;
     private String screenName;
     private String profileImageUrl;
@@ -23,7 +23,7 @@ public class User implements Serializable { //TODO change to User extends BaseMo
     public static User fromJSON(JSONObject json) {
         User u = new User();
         try {
-            u.name = json.getString("name");
+            u.userName = json.getString("name");
             u.uid = json.getLong("id");
             u.screenName = json.getString("screen_name");
             u.profileImageUrl = json.getString("profile_image_url");
@@ -56,8 +56,8 @@ public class User implements Serializable { //TODO change to User extends BaseMo
         return users;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
     public long getUid() {

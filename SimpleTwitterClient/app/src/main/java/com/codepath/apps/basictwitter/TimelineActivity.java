@@ -79,20 +79,28 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
     }
 
     public void onProfileView(MenuItem mi) {
-        startProfileActivity(appUser.getScreenName().toString());
+        startProfileActivity(appUser);
     }
 
     public void onProfileImageSelected(View v) {
         // TODO fix bug: top view visible in screen is selected
         TextView tvScreenName = (TextView) findViewById(R.id.tvScreenName);
         String screenName = tvScreenName.getText().toString();
-        Toast.makeText(this, "TA: sn: " + screenName, Toast.LENGTH_SHORT).show();
-        startProfileActivity(screenName);
+        //Toast.makeText(this, "TimelineActivity: onProfileImageSelected: sn: " + screenName, Toast.LENGTH_SHORT).show();
+        Log.d("TimelineActivity", "onProfileImageSelected: sn: " + screenName);
+        TwitterApplication.getRestClient().getUserInfo(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(JSONObject json) {
+                User user = User.fromJSON(json);
+                //Toast.makeText(getApplicationContext(), "TimelineActivity: getUserInfo: sn: " + user.getScreenName(), Toast.LENGTH_SHORT).show();
+                startProfileActivity(user);
+            }
+        }, screenName);
     }
 
-    public void startProfileActivity(String screenName) {
+    public void startProfileActivity(User user) {
         Intent i = new Intent(this, ProfileActivity.class);
-        i.putExtra("screenName", screenName);
+        i.putExtra("user", user);
         startActivity(i);
     }
 

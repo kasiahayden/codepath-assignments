@@ -19,6 +19,7 @@ import java.util.ArrayList;
  */
 public class UserTimelineFragment extends TweetsListFragment {
     User user;
+    ArrayList<Tweet> tweets;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,17 +60,22 @@ public class UserTimelineFragment extends TweetsListFragment {
             }
         }, user.getScreenName());*/
 
-        String screenName = getArguments().getString("screenName");
+        /*String screenName = getArguments().getString("screenName");
 
         TwitterApplication.getRestClient().getUserInfo(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(JSONArray jsonTweets) {
                 addAll(Tweet.fromJSONArray(jsonTweets));
             }
-        }, screenName);
+        }, screenName);*/
+
+        Bundle bTweets = getArguments();
+        tweets = (ArrayList<Tweet>) bTweets.getSerializable("tweets");
+        addAll(tweets);
 
     }
 
+    @Override
     public void populateTimeline(long max_id){
         //client.getUserTimeline(getHandler());
 

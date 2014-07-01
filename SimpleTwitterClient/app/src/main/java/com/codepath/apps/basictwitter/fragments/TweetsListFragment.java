@@ -101,6 +101,7 @@ public abstract class TweetsListFragment extends Fragment { //FragmentActivity
         return new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(JSONArray json) {
+                //Toast.makeText(getActivity(), "onSuccess from TweetsListFragment getHandler", Toast.LENGTH_SHORT).show();
                 ArrayList<Tweet> tweets = Tweet.fromJSONArray(json);
                 addAll(tweets);
                 setMaxId(tweets);

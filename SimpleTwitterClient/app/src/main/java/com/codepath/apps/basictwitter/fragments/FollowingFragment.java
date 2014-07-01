@@ -1,6 +1,7 @@
 package com.codepath.apps.basictwitter.fragments;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.codepath.apps.basictwitter.TwitterApplication;
 import com.codepath.apps.basictwitter.models.Tweet;
@@ -11,11 +12,16 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class FollowingFragment extends UsersListFragment { // TODO change to extend FollowListFragment over TweetsListFragment
-
+    User user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle bUser = getArguments();
+        user = (User) bUser.getSerializable("user");
+        Toast.makeText(getActivity(), "FollowingFragment: getScreenName: " + user.getScreenName(), Toast.LENGTH_SHORT).show();
+        //addAll(tweets);
 
         // TODO change to get following api call:
 

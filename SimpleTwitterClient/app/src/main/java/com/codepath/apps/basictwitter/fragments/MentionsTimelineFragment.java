@@ -2,6 +2,7 @@ package com.codepath.apps.basictwitter.fragments;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.codepath.apps.basictwitter.TwitterApplication;
 import com.codepath.apps.basictwitter.TwitterClient;
@@ -25,6 +26,7 @@ public class MentionsTimelineFragment extends TweetsListFragment {
     }
 
     public void populateTimeline(long max_id){
+        Toast.makeText(getActivity(), "MentionsTimelineFragment", Toast.LENGTH_SHORT).show();
         client.getMentionsTimeline(getHandler(), max_id);
     }
 }
