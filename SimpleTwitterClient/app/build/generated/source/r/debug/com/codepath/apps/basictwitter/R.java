@@ -971,7 +971,7 @@ containing a value of this type.
         public static final int expanded_menu=0x7f07002c;
         public static final int flContainer=0x7f07004c;
         public static final int flFollowContainer=0x7f070043;
-        public static final int flProfileContainer=0x7f07004b;
+        public static final int flProfileContainer=0x7f07004a;
         public static final int home=0x7f070017;
         public static final int homeAsUp=0x7f070005;
         public static final int icon=0x7f07002a;
@@ -1018,7 +1018,7 @@ containing a value of this type.
         public static final int top_action_bar=0x7f070020;
         public static final int tvBody=0x7f070041;
         public static final int tvCharacterCount=0x7f07003f;
-        public static final int tvFollowers=0x7f07004a;
+        public static final int tvFollowers=0x7f07004b;
         public static final int tvFollowing=0x7f070049;
         public static final int tvName=0x7f07003d;
         public static final int tvRelativeTime=0x7f07004f;

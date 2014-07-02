@@ -53,7 +53,6 @@ public class ComposeActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // Fires right as the text is being changed (even supplies the range of text)
 
-                //Toast.makeText(getApplicationContext(), "count: " + s.length(), Toast.LENGTH_SHORT).show();
                 characterCount = s.length();
                 remainingCharacters = charactersPerTweet - characterCount;
                 tvCharacterCount.setText(Integer.toString(remainingCharacters));

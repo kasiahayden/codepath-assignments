@@ -43,34 +43,21 @@ public abstract class UsersListFragment extends Fragment { //FragmentActivity
         client = TwitterApplication.getRestClient();
         users = new ArrayList<User>();
         //aTweets = new ArrayAdapter<Tweet>(this, android.R.layout.simple_list_item_1, tweets);
-        aUsers = new UserArrayAdapter(getActivity(), users); // No context within a fragment; must define activity
-        // In general be very wary of calling getActivity, cause not one of the 3 ways to interact w/ activities/fragments
-
+        aUsers = new UserArrayAdapter(getActivity(), users);
         populateUserList(-1);
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout
         View v = inflater.inflate(R.layout.fragment_tweets_list, container, false);
-        // Assign our view references
-        // lvItems = ...
-
         lvUsers = (ListView) v.findViewById(R.id.lvTweets);
         lvUsers.setAdapter(aUsers);
         lvUsers.setOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
-                // Triggered only when new data needs to be appended to the list
-                // Add whatever code is needed to append new items to your AdapterView
                 customLoadMoreDataFromApi(page);
-                // or customLoadMoreDataFromApi(totalItemsCount);
             }
         });
-
-        // Return the layout view
         return v;
     }
 
@@ -96,12 +83,7 @@ public abstract class UsersListFragment extends Fragment { //FragmentActivity
 
     // Append more data into the adapter
     public void customLoadMoreDataFromApi(int offset) {
-        // This method probably sends out a network request and appends new data items to your adapter.
-        // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
-        // Deserialize API response and then construct new objects to append to the adapter
-
         populateUserList(maxUserId);
-
     }
 
     public JsonHttpResponseHandler getHandler() {
@@ -114,11 +96,6 @@ public abstract class UsersListFragment extends Fragment { //FragmentActivity
                 ArrayList<User> users = User.fromJSONArray(json); // TODO create function in User
                 addAll(users); //
                 //setMaxId(users);
-
-                /*//Toast.makeText(getApplicationContext(), "populateTimeline success", Toast.LENGTH_SHORT).show();
-                Log.d("debug", json.toString());
-                ArrayList<Tweet> tweets = Tweet.fromJSONArray(json);
-                setMaxId(tweets);*/
             }
 
             @Override
@@ -146,7 +123,4 @@ public abstract class UsersListFragment extends Fragment { //FragmentActivity
     }*/
 
     public abstract void populateUserList(long max_id);
-
-
-
 }

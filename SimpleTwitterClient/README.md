@@ -2,6 +2,11 @@
 
 * Part 2
 
+Notes: I spent a lot of time in this assignment working on the
+backend, especially on the following/followers list, which I didn't
+manage to make work in time. But attempting it made me understand
+fragments much better.
+
 Completed required user stories:
 
 * [x] Includes all required user stories from Week 3 Twitter Client
@@ -10,7 +15,6 @@ Completed required user stories:
 ..* [x] User can view the recent mentions of their username.
 ..* [x] User can scroll to bottom of either of these lists and new
 tweets will load ("infinite scroll")
-TODO: Fix so doesn't reload at end of feed
 ..* [] Optional: Implement tabs in a gingerbread-compatible approach
 * [x] User can navigate to view their own profile
 ..* [x] User can see picture, tagline, # of followers, # of following, and tweets on their profile.
@@ -21,8 +25,8 @@ TODO: Fix so doesn't reload at end of feed
 
 The following advanced user stories are optional:
 
-* [] Robust error handling, check if internet is available, handle error cases, network failures
-* [] Advanced: When a network request is sent, user sees an indeterminate progress indicator
+* [x] Robust error handling, check if internet is available, handle error cases, network failures
+* [x] Advanced: When a network request is sent, user sees an indeterminate progress indicator
 * [] Advanced: User can "reply" to any tweet on their home timeline
 ..* [] The user that wrote the original tweet is automatically "@" replied in compose
 * [] Advanced: User can click on a tweet to be taken to a "detail view" of that tweet
@@ -31,7 +35,9 @@ The following advanced user stories are optional:
 * [] Advanced: User can search for tweets matching a particular query and see results
 * [] Bonus: User can view their direct messages (or send new ones)
 
+Walkthrough of all user stories:
 
+![Video Walkthrough of App](anim_simple_twitter_2.gif)
 
 
 * Part 1

@@ -27,9 +27,7 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Get the data item for this position
         Tweet tweet = getItem(position);
-        // find or inflate the template
         View v;
         if (convertView == null) {
             LayoutInflater inflator = LayoutInflater.from(getContext());
@@ -37,18 +35,17 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
         } else {
             v = convertView;
         }
-        // Find the views within the template
+
         ImageView ivProfileImage = (ImageView) v.findViewById(R.id.ivProfileImage);
         TextView tvScreenName = (TextView) v.findViewById(R.id.tvScreenName);
         TextView tvUserName = (TextView) v.findViewById(R.id.tvUserName);
         TextView tvBody = (TextView) v.findViewById(R.id.tvBody);
         //TextView tvTimestamp = (TextView) v.findViewById(R.id.tvTimestamp);
         TextView tvRelativeTime = (TextView) v.findViewById(R.id.tvRelativeTime);
-        //ivProfileImage.setImageResource(android.R.color.transparent);
         int resId = android.R.color.transparent;
-        //getContext().getResources().getDrawable(android.R.color.transparent)
         ivProfileImage.setImageResource(resId);
         ImageLoader imageLoader = ImageLoader.getInstance();
+
         // Populate views with tweet data
         imageLoader.displayImage(tweet.getUser().getProfileImageUrl(), ivProfileImage);
         tvScreenName.setText(tweet.getUser().getScreenName());
@@ -58,16 +55,5 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
         tvRelativeTime.setText(tweet.getTimeSinceCreated());
 
         return v;
-
-//        TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
-//        TextView tvHome = (TextView) convertView.findViewById(R.id.tvHome);
-//        // Populate the data into the template view using the data object
-//        tvName.setText(user.name);
-//        tvHome.setText(user.hometown);
-//        // Return the completed view to render on screen
-//        return convertView;
     }
-
-
-
 }

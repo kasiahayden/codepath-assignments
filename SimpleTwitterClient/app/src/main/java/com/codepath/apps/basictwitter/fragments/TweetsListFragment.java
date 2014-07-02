@@ -27,7 +27,7 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 
 
-public abstract class TweetsListFragment extends Fragment { //FragmentActivity
+public abstract class TweetsListFragment extends Fragment {
     protected TwitterClient client;
     private ArrayList<Tweet> tweets;
     private ArrayAdapter<Tweet> aTweets;
@@ -39,35 +39,21 @@ public abstract class TweetsListFragment extends Fragment { //FragmentActivity
         super.onCreate(savedInstanceState);
         client = TwitterApplication.getRestClient();
         tweets = new ArrayList<Tweet>();
-        //aTweets = new ArrayAdapter<Tweet>(this, android.R.layout.simple_list_item_1, tweets);
-        aTweets = new TweetArrayAdapter(getActivity(), tweets); // No context within a fragment; must define activity
-        // In general be very wary of calling getActivity, cause not one of the 3 ways to interact w/ activities/fragments
-
+        aTweets = new TweetArrayAdapter(getActivity(), tweets);
         populateTimeline(-1);
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout
         View v = inflater.inflate(R.layout.fragment_tweets_list, container, false);
-        // Assign our view references
-        // lvItems = ...
-
         lvTweets = (ListView) v.findViewById(R.id.lvTweets);
         lvTweets.setAdapter(aTweets);
         lvTweets.setOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
-                // Triggered only when new data needs to be appended to the list
-                // Add whatever code is needed to append new items to your AdapterView
                 customLoadMoreDataFromApi(page);
-                // or customLoadMoreDataFromApi(totalItemsCount);
             }
         });
-
-        // Return the layout view
         return v;
     }
 
@@ -87,29 +73,17 @@ public abstract class TweetsListFragment extends Fragment { //FragmentActivity
         aTweets.clear();
     }
 
-    // Append more data into the adapter
     public void customLoadMoreDataFromApi(int offset) {
-        // This method probably sends out a network request and appends new data items to your adapter.
-        // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
-        // Deserialize API response and then construct new objects to append to the adapter
-
         populateTimeline(maxTweetId);
-
     }
 
     public JsonHttpResponseHandler getHandler() {
         return new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(JSONArray json) {
-                //Toast.makeText(getActivity(), "onSuccess from TweetsListFragment getHandler", Toast.LENGTH_SHORT).show();
                 ArrayList<Tweet> tweets = Tweet.fromJSONArray(json);
                 addAll(tweets);
                 setMaxId(tweets);
-
-                /*//Toast.makeText(getApplicationContext(), "populateTimeline success", Toast.LENGTH_SHORT).show();
-                Log.d("debug", json.toString());
-                ArrayList<Tweet> tweets = Tweet.fromJSONArray(json);
-                setMaxId(tweets);*/
             }
 
             @Override
@@ -137,7 +111,4 @@ public abstract class TweetsListFragment extends Fragment { //FragmentActivity
     }
 
     public abstract void populateTimeline(long max_id);
-
-
-
 }

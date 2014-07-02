@@ -26,25 +26,6 @@ public class FollowingFragment extends UsersListFragment { // TODO change to ext
         user = (User) bUser.getSerializable("user");
         Toast.makeText(getActivity(), "FollowingFragment: getScreenName: " + user.getScreenName(), Toast.LENGTH_SHORT).show();
         getFriendsIds();
-        Log.d("called getFriendsIds", friendsIds);
-        Log.d("previous_cursor_str", previous_cursor_str);
-
-        // TODO change to get following api call:
-
-       /* TwitterApplication.getRestClient().getUserInfo(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(JSONArray jsonTweets) {
-                addAll(Tweet.fromJSONArray(jsonTweets));
-            }
-        }, user.getScreenName());*/
-
-        /*TwitterApplication.getRestClient().getUserInfo(new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(JSONArray jsonUsers) {
-                addAll(User.fromJSONArray(jsonUsers));
-            }
-        }, "khaydentester");*/
-
     }
 
     public void getFriendsIds() {

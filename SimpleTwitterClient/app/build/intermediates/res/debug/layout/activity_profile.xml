@@ -60,14 +60,7 @@
             android:onClick="onClickFollowing"
             android:text="5 Following" />
 
-        <TextView
-            android:id="@+id/tvFollowers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickFollowers"
-            android:text="5 Followers" />
-
-        </LinearLayout>
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/flProfileContainer"
@@ -77,6 +70,15 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/llCounts"></FrameLayout>
+
+    <TextView
+        android:id="@+id/tvFollowers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickFollowers"
+        android:text="5 Followers"
+        android:layout_alignTop="@+id/llCounts"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
 <!-- From: file:/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/layout/activity_profile.xml -->

@@ -3,16 +3,11 @@ package com.codepath.apps.basictwitter.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.codepath.apps.basictwitter.ComposeActivity;
 import com.codepath.apps.basictwitter.R;
-import com.codepath.apps.basictwitter.TwitterApplication;
-import com.codepath.apps.basictwitter.TwitterClient;
 import com.codepath.apps.basictwitter.models.Tweet;
 import com.codepath.apps.basictwitter.models.User;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -22,7 +17,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 
 /**
  * Created by khayden on 6/26/14.
@@ -83,12 +77,9 @@ public class HomeTimelineFragment extends TweetsListFragment {
     }
 
     public void setStatus(String status) {
-        //Toast.makeText(getApplicationContext(), "postStatus: inside " + status, Toast.LENGTH_SHORT).show();
         client.postStatus(new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(String response) {
-                //Toast.makeText(getApplicationContext(), "postStatus: object " + response, Toast.LENGTH_LONG).show();
-                //Log.d("debug", response);
                 JSONObject json;// = new JSONObject();
                 String created_at = "now";
                 try {
@@ -103,8 +94,6 @@ public class HomeTimelineFragment extends TweetsListFragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                //Toast.makeText(getApplicationContext(), "postStatus: created " + created_at, Toast.LENGTH_LONG).show();
-                //Log.d("debug", "json: " + json.toString());
             }
 
             public void onSuccess(JSONArray json) {
@@ -127,12 +116,7 @@ public class HomeTimelineFragment extends TweetsListFragment {
         }, status);
     }
 
-    // Append more data into the adapter
     /*public void customLoadMoreDataFromApi(int offset) {
-        // This method probably sends out a network request and appends new data items to your adapter.
-        // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
-        // Deserialize API response and then construct new objects to append to the adapter
-
         populateTimeline(1, maxTweetId);
     }*/
 
@@ -175,6 +159,4 @@ public class HomeTimelineFragment extends TweetsListFragment {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 }

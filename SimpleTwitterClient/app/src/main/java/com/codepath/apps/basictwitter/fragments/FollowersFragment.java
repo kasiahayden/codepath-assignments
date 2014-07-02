@@ -23,8 +23,6 @@ public class FollowersFragment extends TweetsListFragment {  // TODO change to e
                 addAll(Tweet.fromJSONArray(jsonTweets));
             }
         }, user.getScreenName());*/
-
-
     }
 
     public void populateTimeline(long max_id){
