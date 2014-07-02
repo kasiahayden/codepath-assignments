@@ -52,7 +52,7 @@
         android:layout_marginBottom="10dp"
         android:orientation="horizontal" >
 
-        <Button
+        <TextView
             android:id="@+id/tvFollowing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -77,9 +77,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/llCounts"></FrameLayout>
-
-
-
 
 </RelativeLayout>
 <!-- From: file:/Users/khayden/AndroidStudioProjects/SimpleTwitterClient/app/src/main/res/layout/activity_profile.xml -->

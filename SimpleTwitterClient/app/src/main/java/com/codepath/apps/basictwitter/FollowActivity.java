@@ -26,7 +26,7 @@ public class FollowActivity extends FragmentActivity {
         setContentView(R.layout.activity_follow);
         profileUser = (User) getIntent().getSerializableExtra("user");
         populateFollowList(savedInstanceState, profileUser);
-        Toast.makeText(this, "FollowActivity: onCreate: " + profileUser.getScreenName(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "FollowActivity: onCreate: " + profileUser.getScreenName(), Toast.LENGTH_SHORT).show();
     }
 
 
@@ -41,7 +41,7 @@ public class FollowActivity extends FragmentActivity {
             bUser.putSerializable("user", user);
             //bUser.putString("test", "123");
             followingFragment.setArguments(bUser);
-            Toast.makeText(this, "FollowActivity: getScreenName: " + user.getScreenName(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "FollowActivity: getScreenName: " + user.getScreenName(), Toast.LENGTH_SHORT).show();
 
             //followingFragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction()

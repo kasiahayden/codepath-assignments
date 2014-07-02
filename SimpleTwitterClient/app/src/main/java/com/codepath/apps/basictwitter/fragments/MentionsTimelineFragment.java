@@ -21,12 +21,10 @@ public class MentionsTimelineFragment extends TweetsListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // TODO endless pagination in TweetsListFragment
-
         populateTimeline(-1);
     }
 
     public void populateTimeline(long max_id){
-        Toast.makeText(getActivity(), "MentionsTimelineFragment", Toast.LENGTH_SHORT).show();
         client.getMentionsTimeline(getHandler(), max_id);
     }
 }

@@ -103,12 +103,12 @@ public class Tweet implements Serializable{
         dateArr = relativeDate.split("\\s+");
         try {
             formattedDate = dateArr[0];
-            Log.d("tweet relative1", dateArr[1]);
+            //Log.d("tweet relative1", dateArr[1]);
             if (dateArr[1].contains("second")) {
-                Log.d("tweet relative", dateArr[1]);
+                //Log.d("tweet relative", dateArr[1]);
                 formattedDate += "s";
             } else if (dateArr[1].contains("minute")) {
-                Log.d("tweet relative", dateArr[1]);
+                //Log.d("tweet relative", dateArr[1]);
                 formattedDate += "m";
             } else if (dateArr[1].contains("hour")) {
                 formattedDate += "h";
@@ -150,7 +150,4 @@ public class Tweet implements Serializable{
         return newDateString;
     }
 
-    public void onProfileImageSelected(){
-        //Toast.makeText(getContext(), "onProfileImageSelected", Toast.LENGTH_LONG).show();
-    }
 }

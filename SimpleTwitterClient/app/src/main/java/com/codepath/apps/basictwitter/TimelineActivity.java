@@ -2,13 +2,17 @@ package com.codepath.apps.basictwitter;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,9 +39,45 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_timeline);
         setupTabs();
-        setAppUser();
+        if (isOnline() || isNetworkAvailable()) {
+            setAppUser();
+        } else {
+            Toast.makeText(this, "You're not connected to the internet", Toast.LENGTH_SHORT).show();
+            Log.d("TimelineActivity", "No internet");
+        }
+    }
+
+    // Should be called manually when an async task has started
+    public void showProgressBar() {
+        setProgressBarIndeterminateVisibility(true);
+    }
+
+    // Should be called when an async task has finished
+    public void hideProgressBar() {
+        setProgressBarIndeterminateVisibility(false);
+    }
+
+    private Boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
+    }
+
+    public Boolean isOnline() {
+        try {
+            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+            int returnVal = p1.waitFor();
+            boolean reachable = (returnVal==0);
+            return reachable;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
     }
 
     private void setupTabs() {
@@ -70,12 +110,14 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
     }
 
     public void setAppUser() {
+        showProgressBar();
         TwitterApplication.getRestClient().getMyInfo(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(JSONObject json) {
                 appUser = User.fromJSON(json);
             }
         });
+        hideProgressBar();
     }
 
     public void onProfileView(MenuItem mi) {
@@ -88,6 +130,7 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
         String screenName = tvScreenName.getText().toString();
         //Toast.makeText(this, "TimelineActivity: onProfileImageSelected: sn: " + screenName, Toast.LENGTH_SHORT).show();
         Log.d("TimelineActivity", "onProfileImageSelected: sn: " + screenName);
+        showProgressBar();
         TwitterApplication.getRestClient().getUserInfo(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(JSONObject json) {
@@ -96,13 +139,20 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
                 startProfileActivity(user);
             }
         }, screenName);
+        hideProgressBar();
     }
 
     public void startProfileActivity(User user) {
-        Intent i = new Intent(this, ProfileActivity.class);
-        i.putExtra("user", user);
-        startActivity(i);
+        if (isOnline() || isNetworkAvailable()) {
+            Intent i = new Intent(this, ProfileActivity.class);
+            i.putExtra("user", user);
+            startActivity(i);
+        } else {
+            Toast.makeText(this, "You're not connected to the internet", Toast.LENGTH_SHORT).show();
+            Log.d("TimelineActivity.StartProfile", "No internet");
+        }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

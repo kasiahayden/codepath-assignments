@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,6 +35,7 @@ public class ProfileActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) { //protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_profile);
         profileUser = (User) getIntent().getSerializableExtra("user");
         //Toast.makeText(getApplicationContext(), "ProfileActivity.onCreate screenName: " + profileUser.getScreenName(), Toast.LENGTH_SHORT).show();
@@ -43,6 +45,16 @@ public class ProfileActivity extends FragmentActivity {
         // TODO Disable going to own profile if click on own profile image
         populateProfileHeader();
         loadProfileInfo(savedInstanceState);
+    }
+
+    // Should be called manually when an async task has started
+    public void showProgressBar() {
+        setProgressBarIndeterminateVisibility(true);
+    }
+
+    // Should be called when an async task has finished
+    public void hideProgressBar() {
+        setProgressBarIndeterminateVisibility(false);
     }
 
     private void setProfileUser() {
@@ -72,6 +84,7 @@ public class ProfileActivity extends FragmentActivity {
     }*/
 
     private void loadProfileInfo(final Bundle savedInstanceState) {
+        showProgressBar();
         //Toast.makeText(this, "ProfileActivity: loadProfileInfo: " + screen_name, Toast.LENGTH_SHORT).show();
         TwitterApplication.getRestClient().getUserTimeline(new JsonHttpResponseHandler() {
             @Override
@@ -93,23 +106,24 @@ public class ProfileActivity extends FragmentActivity {
                 Log.d("debug", e.toString());
             }
         }, screenName);
+        hideProgressBar();
     }
 
 
 
     private void populateProfileHeader() {
-        Toast.makeText(getApplicationContext(), "ProfileActivity: populateProfileHeader", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "ProfileActivity: populateProfileHeader", Toast.LENGTH_SHORT).show();
 
         TextView tvName = (TextView) findViewById(R.id.tvName);
         TextView tvTagline = (TextView) findViewById(R.id.tvTagline);
         TextView tvFollowers = (TextView) findViewById(R.id.tvFollowers);
-        //TextView tvFollowing = (TextView) findViewById(R.id.tvFollowing);
-        Button tvFollowing = (Button) findViewById(R.id.tvFollowing); //TODO change back
+        TextView tvFollowing = (TextView) findViewById(R.id.tvFollowing);
+        //Button tvFollowing = (Button) findViewById(R.id.tvFollowing); //TODO change back
         ImageView ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
         tvName.setText(profileUser.getUserName());
         tvTagline.setText(profileUser.getTagline());
         tvFollowers.setText(profileUser.getFollowersCount() + " Followers");
-        tvFollowing.setText(profileUser.getFriendsCount() + " Following!!!");
+        tvFollowing.setText(profileUser.getFriendsCount() + " Following");
         ImageLoader.getInstance().displayImage(profileUser.getProfileImageUrl(), ivProfileImage);
     }
 
@@ -118,6 +132,7 @@ public class ProfileActivity extends FragmentActivity {
             if (savedInstanceState != null) {
                 return;
             }
+
             UserTimelineFragment userTimelineFragment = new UserTimelineFragment();
             // TODO add User u argument
             /*Bundle bUser = new Bundle();
@@ -128,14 +143,16 @@ public class ProfileActivity extends FragmentActivity {
             bUser.putString("screenName", screenName);*/
 
             Bundle bTweets = new Bundle();
-            bTweets.putSerializable("tweets", tweets);
+            bTweets.putSerializable("pTweets", tweets);
             userTimelineFragment.setArguments(bTweets);
+
 
 
 
             //userTimelineFragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.flProfileContainer, userTimelineFragment).commit();
+
         }
     }
 
@@ -162,15 +179,17 @@ public class ProfileActivity extends FragmentActivity {
         //Toast.makeText(this, "ProfileActivity: onClickFollowers", Toast.LENGTH_SHORT).show();
         Log.d("ProfileActivity", "onClickFollowers");
         Intent i = new Intent(this, FollowActivity.class);
-        Toast.makeText(this, "ProfileActivity: onClickFollowers: " + profileUser.getScreenName(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "ProfileActivity: onClickFollowers: " + profileUser.getScreenName(), Toast.LENGTH_SHORT).show();
         i.putExtra("user", profileUser);
         startActivity(i);
     }
 
-    public void onClickFollowing(View v) {
+    public void onClickFollowing(View v) { //Friends
         //Toast.makeText(this, "ProfileActivity: onClickFollowing", Toast.LENGTH_SHORT).show();
         Log.d("ProfileActivity", "onClickFollowing");
         Intent i = new Intent(this, FollowActivity.class);
-        //startActivity(i);
+        //Toast.makeText(this, "ProfileActivity: onClickFollowing: " + profileUser.getScreenName(), Toast.LENGTH_SHORT).show();
+        i.putExtra("user", profileUser);
+        startActivity(i);
     }
 }

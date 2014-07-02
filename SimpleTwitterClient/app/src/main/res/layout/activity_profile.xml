@@ -52,7 +52,7 @@
         android:layout_marginBottom="10dp"
         android:orientation="horizontal" >
 
-        <Button
+        <TextView
             android:id="@+id/tvFollowing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,14 +60,7 @@
             android:onClick="onClickFollowing"
             android:text="5 Following" />
 
-        <TextView
-            android:id="@+id/tvFollowers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickFollowers"
-            android:text="5 Followers" />
-
-        </LinearLayout>
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/flProfileContainer"
@@ -78,7 +71,13 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/llCounts"></FrameLayout>
 
-
-
+    <TextView
+        android:id="@+id/tvFollowers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickFollowers"
+        android:text="5 Followers"
+        android:layout_alignTop="@+id/llCounts"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

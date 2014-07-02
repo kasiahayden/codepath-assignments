@@ -29,10 +29,9 @@ import java.util.ArrayList;
  */
 public class HomeTimelineFragment extends TweetsListFragment {
     //private TwitterClient client;
-    /*
     private final int REQUEST_CODE = 20;
     User user;
-    private TweetsListFragment fragmentTweetsList;*/
+    private TweetsListFragment fragmentTweetsList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,9 +66,9 @@ public class HomeTimelineFragment extends TweetsListFragment {
     }
 
 
-    /*public void setCurrentUser(){
+    public void setCurrentUser(){
         //Toast.makeText(getApplicationContext(), "getUser", Toast.LENGTH_SHORT).show();
-        client.getCurrentUser(new JsonHttpResponseHandler() {
+        client.getMyInfo(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(JSONObject json) {
                 Log.d("debug", json.toString());
@@ -81,9 +80,9 @@ public class HomeTimelineFragment extends TweetsListFragment {
                 Log.d("debug", e.toString());
             }
         });
-    }*/
+    }
 
-    /*public void setStatus(String status) {
+    public void setStatus(String status) {
         //Toast.makeText(getApplicationContext(), "postStatus: inside " + status, Toast.LENGTH_SHORT).show();
         client.postStatus(new AsyncHttpResponseHandler() {
             @Override
@@ -98,7 +97,7 @@ public class HomeTimelineFragment extends TweetsListFragment {
                     fragmentTweetsList.add(tweet);
                     fragmentTweetsList.notifyDataSetChanged();
                     fragmentTweetsList.clear();
-                    populateTimeline(1, -1);
+                    populateTimeline(-1);
 
                     //created_at = json.getString("created_at");
                 } catch (JSONException e) {
@@ -108,7 +107,7 @@ public class HomeTimelineFragment extends TweetsListFragment {
                 //Log.d("debug", "json: " + json.toString());
             }
 
-            *//*public void onSuccess(JSONArray json) {
+            public void onSuccess(JSONArray json) {
 
                 String created_at = "now";
                 try {
@@ -117,16 +116,16 @@ public class HomeTimelineFragment extends TweetsListFragment {
                     created_at = "fail";
                     e.printStackTrace();
                 }
-                Toast.makeText(getApplicationContext(), "postStatus: created " + created_at, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "postStatus: created " + created_at, Toast.LENGTH_LONG).show();
                 Log.d("debug", "json: " + json.toString());
-            }*//*
+            }
 
             @Override
             public void onFailure(Throwable e, String s) {
                 Log.d("debug", e.toString());
             }
         }, status);
-    }*/
+    }
 
     // Append more data into the adapter
     /*public void customLoadMoreDataFromApi(int offset) {
@@ -139,14 +138,14 @@ public class HomeTimelineFragment extends TweetsListFragment {
 
 
 
-    /*public void composeMessage() {
+    public void composeMessage() {
         //Toast.makeText(this, "compose message", Toast.LENGTH_LONG).show();
-        Intent i = new Intent(this, ComposeActivity.class);
+        Intent i = new Intent(getActivity(), ComposeActivity.class);
         i.putExtra("profile_image_url", user.getProfileImageUrl());
-        i.putExtra("name", user.getName());
+        i.putExtra("name", user.getUserName());
         i.putExtra("screen_name", user.getScreenName());
         startActivityForResult(i, REQUEST_CODE);
-    }*/
+    }
 
     /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -157,7 +156,7 @@ public class HomeTimelineFragment extends TweetsListFragment {
         }
     }*/
 
-    /*@Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -169,13 +168,13 @@ public class HomeTimelineFragment extends TweetsListFragment {
             case R.id.miCompose:
                 composeMessage();
                 return true;
-            *//*case R.id.miProfile:
+            /*case R.id.miProfile:
                 showProfileView();
-                return true;*//*
+                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }*/
+    }
 
 
 }

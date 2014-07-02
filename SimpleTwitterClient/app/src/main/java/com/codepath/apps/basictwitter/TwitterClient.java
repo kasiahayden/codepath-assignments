@@ -71,7 +71,7 @@ public class TwitterClient extends OAuthBaseClient {
 
     //https://api.twitter.com/1.1/statuses/update.json
     public void postStatus(AsyncHttpResponseHandler handler, String status) {
-        Log.d("debug", "postStatus: " + status);
+        //Log.d("debug", "postStatus: " + status);
         String apiUrl = getApiUrl("statuses/update.json");
         RequestParams requestParams = new RequestParams();
         requestParams.put("status", status);
@@ -88,17 +88,24 @@ public class TwitterClient extends OAuthBaseClient {
 
     public void getUserTimeline(AsyncHttpResponseHandler handler, String screen_name) {
         String apiUrl = getApiUrl("statuses/user_timeline.json");
-        client.get(apiUrl, null, handler);
         RequestParams requestParams = new RequestParams();
         requestParams.put("screen_name", screen_name);
         client.get(apiUrl, requestParams, handler);
     }
 
     // https://api.twitter.com/1.1/friends/ids.json
-    public void getFollowing(AsyncHttpResponseHandler handler, String screen_name) {
+    public void getFriendsIds(JsonHttpResponseHandler handler, String screen_name) {
         String apiUrl = "friends/ids.json";
         RequestParams requestParams = new RequestParams();
         requestParams.put("screen_name", screen_name);
+        client.get(apiUrl, requestParams, handler);
+    }
+
+    //https://api.twitter.com/1.1/users/lookup.json
+    public void usersLookup(AsyncHttpResponseHandler handler, String user_id) {
+        String apiUrl = "users/lookup.json";
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("user_id", user_id);
         client.get(apiUrl, requestParams, handler);
     }
 
