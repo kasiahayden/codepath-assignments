@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WellDone</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_pump_details">PumpDetails</string>
+    <string name="title_activity_create_report">CreateReportActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pump_name_label">Pump: </string>
+    <string name="pump_location_label">Pump Location</string>
+    <string name="pump_last_updated_label">Last Updated: </string>
+    <string name="pump_last_updated_date_label">Last Updated Date</string>
+    <string name="title_activity_demo_camera">DemoCameraActivity</string>
+
+</resources>
