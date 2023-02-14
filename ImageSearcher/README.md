@@ -1,29 +1,6 @@
 # ImageSearcher
 
-This is the second assignment for the Android CodePath class.
-
-Time spent: About 20 - 25 hrs as a guess.
-
-
-Completed user stories:
-
-* [x] User can enter a search query that will display a grid of image results from the Google Image API.
-* [x] User can click on "settings" which allows selection of advanced search options to filter results
-* [x] User can configure advanced search filters such as:
-..* [x] Size (small, medium, large, extra-large)
-..* [x] Color filter (black, blue, brown, gray, green, etc...)
-..* [x] Type (faces, photo, clip art, line art)
-..* [x] Site (espn.com)
-* [x] Subsequent searches will have any filters applied to the search results
-* [x] User can tap on any image in results to see the image full-screen
-* [x] User can scroll down “infinitely” to continue loading more image results (up to 8 pages)
-
-Completed advanced/optional user stories:
-
-* [x] Advanced: Robust error handling, check if internet is available, handle error cases, network failures
-* [x] Advanced: Use the ActionBar SearchView or custom layout as the query box instead of an EditText
-* [x] Advanced: Replace Filter Settings Activity with a lightweight modal overlay
-
+This is the second assignment for the Android CodePath class. It took approximately 20-25 hours to complete the given user stories and optional advanced stories. The user stories included the ability to enter a search query that would display a grid of results from the Google Image API. The user could then click on “settings” to select advanced search options to filter the results, such as size (small, medium, large, extra-large), color filter (black, blue, brown, gray, green, etc…), type (faces, photo, clip art, line art), and site (espn.com). Subsequent searches had any applied filters to the search results. Users were also able to tap on any image in the results to see it in full-screen and scroll down “infinitely” to continue loading more image results, up to 8 pages. For the optional advanced user stories, robust error handling was implemented to check if internet was available, as well as handle error cases and network failures. Additionally, the ActionBar SearchView or custom layout was used as the query box instead of an EditText, and the Filter Settings Activity was replaced with a lightweight modal overlay.
 
 Walkthrough of all user stories:
 
